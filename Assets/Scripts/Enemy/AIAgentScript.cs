@@ -36,7 +36,7 @@ public class AIAgentScript : MonoBehaviour
             // Trigger dead animation
             animator.SetBool("dead", true);
             // Delay then destroy the object
-            if (time > 1)
+            if (time > 1.0f)
             {
                 Destroy(gameObject);
             }
