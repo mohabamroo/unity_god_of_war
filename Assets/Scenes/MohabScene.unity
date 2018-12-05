@@ -357,10 +357,6 @@ Prefab:
       propertyPath: m_Name
       value: kratos_org
       objectReference: {fileID: 0}
-    - target: {fileID: 1392391228836164, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
-      propertyPath: m_TagString
-      value: Weapon
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
   m_IsPrefabAsset: 0
@@ -406,6 +402,63 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b200dd7e6799a6f4daa31c229775dedf, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1017765820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1017765822}
+  - component: {fileID: 1017765821}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1017765821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017765820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: f0b8e8830d918dc4ebcf437671cc8472, type: 2}
+--- !u!4 &1017765822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1017765820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1310147021
 Prefab:
   m_ObjectHideFlags: 0
@@ -632,11 +685,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67f8c0ebc807a4a4aad8b776ba444d6a, type: 2}
   m_IsPrefabAsset: 0
---- !u!95 &2045668375 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 95265334545792276, guid: abaa12a4608e25f4885d23200b090dca,
-    type: 2}
-  m_PrefabInternal: {fileID: 2097058480}
 --- !u!1001 &2097058480
 Prefab:
   m_ObjectHideFlags: 0
@@ -678,18 +726,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114370742458133654, guid: abaa12a4608e25f4885d23200b090dca,
         type: 2}
-      propertyPath: animator
+      propertyPath: player
       value: 
-      objectReference: {fileID: 2045668375}
+      objectReference: {fileID: 213720844}
     - target: {fileID: 1482231938101370, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
       propertyPath: m_Name
       value: ApproachingEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 114370742458133654, guid: abaa12a4608e25f4885d23200b090dca,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 213720844}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
   m_IsPrefabAsset: 0

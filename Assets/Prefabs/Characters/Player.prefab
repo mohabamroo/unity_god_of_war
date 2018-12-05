@@ -359,6 +359,7 @@ GameObject:
   - component: {fileID: 95334381099917386}
   - component: {fileID: 54186255087546938}
   - component: {fileID: 114589580328366856}
+  - component: {fileID: 195701474993116806}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -716,7 +717,7 @@ GameObject:
   - component: {fileID: 114050555366805308}
   m_Layer: 0
   m_Name: Axe
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4883,3 +4884,24 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0000013584504, y: 0.0008505022, z: -0.00026803138}
     m_Extent: {x: 0.0021294355, y: 0.0009700518, z: 0.0018424522}
   m_DirtyAABB: 0
+--- !u!195 &195701474993116806
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211306090947824}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.01
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
