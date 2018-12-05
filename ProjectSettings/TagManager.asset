@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Boss
   - Weapon
+  - Floor
   layers:
   - Default
   - TransparentFX
