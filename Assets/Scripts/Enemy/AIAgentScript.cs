@@ -45,9 +45,11 @@ public class AIAgentScript : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
+        print("collision");
         // Player is within enemy attack zone, trigger attack animation
         if (col.gameObject.tag == "Player")
         {
+            print("detected player");
             animator.SetBool("attack", true);
             animator.SetBool("run", false);
             animator.SetBool("hit", false);
