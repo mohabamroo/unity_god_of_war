@@ -323,7 +323,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4674517352486634, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 6.820939
+      value: 13.64
       objectReference: {fileID: 0}
     - target: {fileID: 4674517352486634, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
       propertyPath: m_LocalPosition.y
@@ -367,7 +367,47 @@ Prefab:
       propertyPath: m_Radius
       value: 0.003
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 54186255087546938, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 65160657240865696, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 65272322963932140, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000478416641602, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
+      propertyPath: m_Name
+      value: AxeColliderTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 208653761167886410, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_Extents.y
+      value: 0.0025
+      objectReference: {fileID: 0}
+    - target: {fileID: 65160657240865696, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65160657240865696, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.013
+      objectReference: {fileID: 0}
+    - target: {fileID: 65160657240865696, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 208653761167886410, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &742751175
@@ -730,6 +770,15 @@ Prefab:
         type: 2}
       propertyPath: m_Center.x
       value: 0.23300838
+      objectReference: {fileID: 0}
+    - target: {fileID: 65170830007994250, guid: abaa12a4608e25f4885d23200b090dca,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1482231938101370, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abaa12a4608e25f4885d23200b090dca, type: 2}

@@ -29,6 +29,8 @@ public class AIAgentScript : MonoBehaviour
     {
         // Enemy always following the player
         nav.SetDestination(player.position);
+        this.followAndAttackPlayer();
+
 
         if (health <= 0)
         {
@@ -43,6 +45,39 @@ public class AIAgentScript : MonoBehaviour
         }
     }
 
+    void followAndAttackPlayer()
+    {
+        float dist = Vector3.Distance(player.position, transform.position);
+        if (dist < 1.5)
+        {
+            this.attackPlayer();
+            this.nav.isStopped = true;
+        }
+        else
+        {
+            this.nav.isStopped = false;
+        }
+    }
+
+    void attackPlayer()
+    {
+        transform.LookAt(player.transform);
+        animator.SetBool("attack", true);
+        animator.SetBool("run", false);
+        animator.SetBool("hit", false);
+        animator.SetBool("dead", false);
+    }
+
+    void takeHit()
+    {
+        animator.SetBool("attack", false);
+        animator.SetBool("run", false);
+        animator.SetBool("hit", true);
+        animator.SetBool("dead", false);
+        // Decrement HP
+        health -= 10;
+    }
+
     void OnCollisionEnter(Collision col)
     {
         print("collision");
@@ -50,21 +85,13 @@ public class AIAgentScript : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             print("detected player");
-            animator.SetBool("attack", true);
-            animator.SetBool("run", false);
-            animator.SetBool("hit", false);
-            animator.SetBool("dead", false);
+            // this.attackPlayer();
         }
 
         // Player attacked enemy, decrement HP and trigger the hit animation
         if (col.gameObject.tag == "Weapon")
         {
-            animator.SetBool("attack", false);
-            animator.SetBool("run", false);
-            animator.SetBool("hit", true);
-            animator.SetBool("dead", false);
-            // Decrement HP
-            health -= 10;
+            this.takeHit();
         }
     }
 
