@@ -9,11 +9,13 @@ public class PlayerMovementScript : MonoBehaviour
     bool jumpDoubleTap = true;
     public int health;
     public float lastHitTime;
+    private float time;
     // Use this for initialization
     void Start()
     {
 
         this.lastHitTime = Time.deltaTime;
+        print(this.lastHitTime);
         this.anim = GetComponent<Animator>();
         this.health = 100;
     }
@@ -21,6 +23,7 @@ public class PlayerMovementScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.time += Time.deltaTime;
         if (health < 0)
         {
             return;
@@ -113,10 +116,14 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnTriggerEnter(Collider enemy)
     {
-        var timeDiff = Time.deltaTime - this.lastHitTime;
+        // TODO: fix time
+        print(this.time);
+        var timeDiff = this.time - this.lastHitTime;
+        print(timeDiff);
         if (enemy.CompareTag("Weapon") && this.health > 0 && timeDiff > 1)
         {
-            this.lastHitTime = Time.deltaTime;
+            print("player atacked");
+            this.lastHitTime = this.time;
             health -= 10;
             if (health <= 0)
             {
@@ -126,6 +133,10 @@ public class PlayerMovementScript : MonoBehaviour
             {
                 this.anim.SetTrigger("hit");
             }
+        }
+        else
+        {
+            print("player was not attacked");
         }
     }
 }
