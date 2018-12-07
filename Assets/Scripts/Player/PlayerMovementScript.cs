@@ -15,7 +15,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
 
         this.lastHitTime = Time.deltaTime;
-        print(this.lastHitTime);
         this.anim = GetComponent<Animator>();
         this.health = 100;
     }
@@ -28,19 +27,37 @@ public class PlayerMovementScript : MonoBehaviour
         {
             return;
         }
-        this.updateMovement();
+        this.updatePosition();
     }
 
-    void updateMovement()
+    void updatePosition()
+    {
+        this.handleMovement();
+        this.handleRotation();
+        this.handleJumpLogic();
+        this.handleAttackLogic();
+    }
+
+    void handleMovement()
     {
         var xInput = Input.GetAxis("Vertical");
-        if (xInput != 0)
+        if (xInput == 0)
         {
-            anim.SetBool("walking", true);
+            anim.SetBool("walking", false);
+            anim.SetBool("back", false);
         }
         else
         {
-            anim.SetBool("walking", false);
+            if (xInput > 0)
+            {
+                anim.SetBool("walking", true);
+                anim.SetBool("back", false);
+            }
+            else
+            {
+                anim.SetBool("walking", false);
+                anim.SetBool("back", true);
+            }
         }
         if (Input.GetKey(KeyCode.LeftShift) && xInput > 0)
         {
@@ -50,27 +67,6 @@ public class PlayerMovementScript : MonoBehaviour
         {
             anim.SetBool("running", false);
         }
-
-        this.handleJumpLogic();
-        this.handleAttackLogic();
-
-        var rotInput = Input.GetAxis("Horizontal");
-        if (rotInput > 0)
-        {
-            anim.SetBool("right", true);
-            anim.SetBool("left", false);
-        }
-        if (rotInput < 0)
-        {
-            anim.SetBool("left", true);
-            anim.SetBool("right", false);
-        }
-        if (rotInput == 0)
-        {
-            anim.SetBool("left", false);
-            anim.SetBool("right", false);
-        }
-        transform.Rotate(0, rotInput, 0);
     }
 
     void handleJumpLogic()
@@ -114,29 +110,77 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
+    void takeHit()
+    {
+        // TODO: check blocking
+        this.health -= 10;
+        if (this.health <= 0)
+        {
+            this.anim.SetTrigger("die");
+            // StartCoroutine("setDie");
+
+        }
+        else
+        {
+            this.anim.SetTrigger("hit");
+            // StartCoroutine("setHit");
+
+        }
+    }
+
+    IEnumerator setHit()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.anim.SetTrigger("hit");
+
+    }
+
+    IEnumerator setDie()
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.anim.SetTrigger("die");
+
+    }
+
     void OnTriggerEnter(Collider enemy)
     {
         // TODO: fix time
-        print(this.time);
         var timeDiff = this.time - this.lastHitTime;
-        print(timeDiff);
-        if (enemy.CompareTag("Weapon") && this.health > 0 && timeDiff > 1)
+        if (enemy.CompareTag("Weapon") && this.health > 0 && timeDiff > 1.3)
         {
             print("player atacked");
             this.lastHitTime = this.time;
-            health -= 10;
-            if (health <= 0)
-            {
-                this.anim.SetTrigger("die");
-            }
-            else
-            {
-                this.anim.SetTrigger("hit");
-            }
+            this.takeHit();
         }
         else
         {
             print("player was not attacked");
         }
+    }
+
+    void increaseHits()
+    {
+
+    }
+
+    void handleRotation()
+    {
+        var rotInput = Input.GetAxis("Horizontal");
+        if (rotInput > 0)
+        {
+            this.anim.SetBool("right", true);
+            this.anim.SetBool("left", false);
+        }
+        if (rotInput < 0)
+        {
+            this.anim.SetBool("left", true);
+            this.anim.SetBool("right", false);
+        }
+        if (rotInput == 0)
+        {
+            this.anim.SetBool("left", false);
+            this.anim.SetBool("right", false);
+        }
+        transform.Rotate(0, rotInput, 0);
     }
 }

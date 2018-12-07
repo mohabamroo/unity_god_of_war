@@ -35,8 +35,8 @@ public class FlyCameraScript : MonoBehaviour
         lastMouse = Input.mousePosition;
         // Mouse  camera angle done. 
 
-        transform.LookAt(this.player);
-        transform.Translate(Vector3.right * Time.deltaTime);
+        // transform.LookAt(this.player);
+        // transform.Translate(Vector3.right * Time.deltaTime);
     }
 
 

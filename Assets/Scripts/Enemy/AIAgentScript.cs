@@ -11,7 +11,9 @@ public class AIAgentScript : MonoBehaviour
     public Transform player;
 
     public int health;
-    float time;
+    private float time;
+    public float lastHitTime;
+
 
     // Use this for initialization
     void Start()
@@ -19,6 +21,7 @@ public class AIAgentScript : MonoBehaviour
         // animator.SetBool("run", false);
         // playerHealth = player.GetComponent <PlayerHealth> ();
         // enemyHealth = GetComponent <EnemyHealth> ();
+        this.lastHitTime = Time.deltaTime;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         health = 100;
@@ -27,6 +30,8 @@ public class AIAgentScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.time += Time.deltaTime;
+
         // Enemy always following the player
         nav.SetDestination(player.position);
         this.followAndAttackPlayer();
@@ -48,7 +53,7 @@ public class AIAgentScript : MonoBehaviour
     void followAndAttackPlayer()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist < 1.5)
+        if (dist < 2)
         {
             this.attackPlayer();
             this.nav.isStopped = true;
@@ -70,26 +75,35 @@ public class AIAgentScript : MonoBehaviour
 
     void takeHit()
     {
+        print("enemy hit");
+        health -= 10;
+        this.lastHitTime = this.time;
+        this.nav.isStopped = true;
+        // this.player.GetComponent increaseHits();
         animator.SetBool("attack", false);
         animator.SetBool("run", false);
         animator.SetBool("hit", true);
         animator.SetBool("dead", false);
         // Decrement HP
-        health -= 10;
+        this.nav.isStopped = false;
+
     }
 
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        print("collision");
+        print("collision with enemy");
         // Player is within enemy attack zone, trigger attack animation
-        if (col.gameObject.tag == "Player")
+        if (col.tag == "Player")
         {
-            print("detected player");
+            // print("detected player");
             // this.attackPlayer();
         }
 
         // Player attacked enemy, decrement HP and trigger the hit animation
-        if (col.gameObject.tag == "Weapon")
+        var timeDiff = this.time - this.lastHitTime;
+        print("Time: ");
+        print(timeDiff);
+        if (col.tag == "Weapon" && timeDiff > 1)
         {
             this.takeHit();
         }
