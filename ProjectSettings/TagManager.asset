@@ -9,6 +9,10 @@ TagManager:
   - Boss
   - Weapon
   - Floor
+  - WeakPoint
+  - WeakPointLeft
+  - WeakPointRight
+  - WeakPointSpine
   layers:
   - Default
   - TransparentFX
