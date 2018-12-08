@@ -110,10 +110,10 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
-    void takeHit()
+    public void takeHit(float amount)
     {
         // TODO: check blocking
-        this.health -= 10;
+        this.health -= 1;
         if (this.health <= 0)
         {
             this.anim.SetTrigger("die");
@@ -150,7 +150,7 @@ public class PlayerMovementScript : MonoBehaviour
         {
             print("player atacked");
             this.lastHitTime = this.time;
-            this.takeHit();
+            this.takeHit(10);
         }
         else
         {

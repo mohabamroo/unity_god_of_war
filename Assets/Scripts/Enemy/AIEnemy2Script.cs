@@ -31,8 +31,6 @@ public class AIEnemy2Script : MonoBehaviour
         // Stopping distance for the enemy to throw fireballs
         nav.stoppingDistance = GetComponent<enemy2Script>().maxDistance;
 
-        Debug.Log(animator.GetBool("dead"));
-
         if (health <= 0 && !animator.GetBool("dead"))
         {
             // Trigger dead animation;

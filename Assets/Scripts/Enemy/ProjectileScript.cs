@@ -5,11 +5,12 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour {
 
     public ParticleSystem explosion;
+    Transform player;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start () {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -24,7 +25,8 @@ public class ProjectileScript : MonoBehaviour {
 
         if(collision.gameObject.tag == "Player")
         {
-
+            player.GetComponent<PlayerMovementScript>().takeHit(5);
         }
     }
+    
 }
