@@ -110,10 +110,10 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
-    public void takeHit(float amount)
+    public void takeHit(int amount)
     {
         // TODO: check blocking
-        this.health -= 1;
+        this.health -= amount;
         if (this.health <= 0)
         {
             this.anim.SetTrigger("die");
