@@ -8,6 +8,7 @@ public class PlayerMovementScript : MonoBehaviour
     float jumpDoubleTapTime;
     bool jumpDoubleTap = true;
     public int health;
+    public int rage;
     public float lastHitTime;
     private float time;
     // Use this for initialization
@@ -17,6 +18,7 @@ public class PlayerMovementScript : MonoBehaviour
         this.lastHitTime = Time.deltaTime;
         this.anim = GetComponent<Animator>();
         this.health = 100;
+        this.rage = 0;
     }
 
     // Update is called once per frame
@@ -33,7 +35,7 @@ public class PlayerMovementScript : MonoBehaviour
     void updatePosition()
     {
         this.handleMovement();
-        this.handleRotation();
+        // this.handleRotation();
         this.handleJumpLogic();
         this.handleAttackLogic();
     }
@@ -161,6 +163,18 @@ public class PlayerMovementScript : MonoBehaviour
     void increaseHits()
     {
 
+    }
+
+    public void increaseRage()
+    {
+        if(this.rage < 30)
+            this.rage += 10;
+
+    }
+
+    public void increaseHealthWithChest() 
+    {
+        this.health = 100;
     }
 
     void handleRotation()

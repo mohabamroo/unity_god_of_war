@@ -106,6 +106,9 @@ public class AIAgentScript : MonoBehaviour
         if (col.tag == "Weapon" && timeDiff > 1)
         {
             this.takeHit();
+            // Increase rage for kratos
+            GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerMovementScript>().increaseRage();
+
         }
     }
 
