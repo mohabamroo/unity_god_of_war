@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+
+
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -19,6 +22,6 @@ public class MainMenu : MonoBehaviour {
 	}
 
 	public void StartGame() {
-		// SceneManager.LoadScene("MainScene");
-	}
+    
+    }
 }
