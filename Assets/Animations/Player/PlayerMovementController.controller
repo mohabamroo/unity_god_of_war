@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47281020f841fcc42957833b8124b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footSteps: {fileID: 8300000, guid: 708a178ec05fe834a89ebb0b7dd9d677, type: 3}
+  soundEffect: {fileID: 8300000, guid: 708a178ec05fe834a89ebb0b7dd9d677, type: 3}
 --- !u!114 &114137813505225938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47281020f841fcc42957833b8124b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footSteps: {fileID: 8300000, guid: 334adcc47bff85f4582ae4206617f2bd, type: 3}
+  soundEffect: {fileID: 8300000, guid: 334adcc47bff85f4582ae4206617f2bd, type: 3}
 --- !u!114 &114279490643583226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47281020f841fcc42957833b8124b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footSteps: {fileID: 8300000, guid: e5b35bced19a177438b31f14f8759637, type: 3}
+  soundEffect: {fileID: 8300000, guid: e5b35bced19a177438b31f14f8759637, type: 3}
 --- !u!206 &206036541626206606
 BlendTree:
   m_ObjectHideFlags: 1
@@ -1270,7 +1270,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 1102229083629350348}
-    m_Position: {x: 1104, y: 60, z: 0}
+    m_Position: {x: 1104, y: 48, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102792933297793892}
     m_Position: {x: 1068, y: -228, z: 0}

@@ -13,6 +13,7 @@ public class AIAgentScript : MonoBehaviour
     public int health;
     private float time;
     public float lastHitTime;
+    private float lastAttackTime;
 
 
     // Use this for initialization
@@ -31,7 +32,6 @@ public class AIAgentScript : MonoBehaviour
     void Update()
     {
         this.time += Time.deltaTime;
-
         // Enemy always following the player
         nav.SetDestination(player.position);
         this.followAndAttackPlayer();
@@ -49,18 +49,33 @@ public class AIAgentScript : MonoBehaviour
             }
         }
     }
-
+    void restAfterAttack() {
+        animator.SetBool("attack", false);
+        this.lastAttackTime = 0;
+    }
     void followAndAttackPlayer()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist < 2)
+        if (dist < 2.4)
         {
-            this.attackPlayer();
             this.nav.isStopped = true;
+            if (this.lastAttackTime > 2)
+            {
+                this.attackPlayer();
+                Invoke("restAfterAttack", 2.5f);
+            }
+            else {
+                this.lastAttackTime += Time.deltaTime;
+                animator.SetBool("run", false);
+            } 
         }
         else
         {
             this.nav.isStopped = false;
+            animator.SetBool("run", true);
+            animator.SetBool("attack", false);
+            animator.SetBool("hit", false);
+            animator.SetBool("dead", false);
         }
     }
 
@@ -101,8 +116,8 @@ public class AIAgentScript : MonoBehaviour
 
         // Player attacked enemy, decrement HP and trigger the hit animation
         var timeDiff = this.time - this.lastHitTime;
-        print("Time: ");
-        print(timeDiff);
+        //print("Time: ");
+        //(timeDiff);
         if (col.tag == "Weapon" && timeDiff > 1)
         {
             this.takeHit();
@@ -125,8 +140,8 @@ public class AIAgentScript : MonoBehaviour
 
         if (col.gameObject.tag == "Weapon")
         {
-            animator.SetBool("attack", false);
             animator.SetBool("run", true);
+            animator.SetBool("attack", false);
             animator.SetBool("hit", false);
             animator.SetBool("dead", false);
         }
