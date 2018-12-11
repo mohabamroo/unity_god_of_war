@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1119,7 +1119,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1029647634991228, guid: 63c6e6dee21a97c44bd7e08121ee133a, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1552564110021788, guid: 63c6e6dee21a97c44bd7e08121ee133a, type: 2}
       propertyPath: m_TagString
@@ -1144,6 +1144,23 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c6e6dee21a97c44bd7e08121ee133a, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &530326548 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1864555865368352, guid: 1bbc504b24cfc984fa8e9410a9e83886,
+    type: 2}
+  m_PrefabInternal: {fileID: 1959402802}
+--- !u!65 &530326551
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530326548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &641740329
 Prefab:
   m_ObjectHideFlags: 0
@@ -6540,7 +6557,7 @@ MonoBehaviour:
   enemies:
   - {fileID: 1923798544}
   interval: 70
-  enemiesLimit: 20
+  enemiesLimit: 1
 --- !u!114 &1693773274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6640,7 +6657,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1482231938101370, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4150866843718818, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8198,6 +8215,20 @@ Prefab:
     - target: {fileID: 4296312060186178, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 65560590007459624, guid: 1bbc504b24cfc984fa8e9410a9e83886,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1753765389604190, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 65560590007459624, guid: 1bbc504b24cfc984fa8e9410a9e83886,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}

@@ -156,7 +156,7 @@ public class PlayerMovementScript : MonoBehaviour
         }
         else
         {
-            print("player was not attacked");
+            //print("player was not attacked");
         }
     }
 

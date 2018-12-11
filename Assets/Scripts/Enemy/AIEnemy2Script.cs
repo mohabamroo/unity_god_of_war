@@ -8,22 +8,27 @@ public class AIEnemy2Script : MonoBehaviour
 
     public Animator animator;
     public GameObject skeleton;
+
     NavMeshAgent nav;
     Transform player;
 
     public int health;
+    public float lastHitTime;
+    private float time;
 
     // Use this for initialization
     void Start()
     {
+        lastHitTime = Time.deltaTime;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
-        health = 100;
+        health = 10;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        time += Time.deltaTime;
         //Falsify();
         //startPosition = transform.localPosition;
         // Enemy always following the player
@@ -31,9 +36,9 @@ public class AIEnemy2Script : MonoBehaviour
         // Stopping distance for the enemy to throw fireballs
         nav.stoppingDistance = GetComponent<enemy2Script>().maxDistance;
 
-        if (health <= 0 && !animator.GetBool("dead"))
+        if (health <= 0)
         {
-            // Trigger dead animation;
+            // Trigger dead animation
             Dead();
             return;
         }
@@ -45,19 +50,30 @@ public class AIEnemy2Script : MonoBehaviour
             Run();
     }
 
-    void OnCollisionStay(Collision col)
-    { 
+    void takeHit()
+    {
+        health -= 10;
+        nav.isStopped = true;
+        Hit();
+        // Decrement HP
+        nav.isStopped = false;
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        var timeDiff = time - lastHitTime;
         // Player attacked enemy, decrement HP and trigger the hit animation
-        if (col.gameObject.tag == "Weapon")
+        if (other.gameObject.tag == "Weapon" && health > 0 && timeDiff > 1.3f)
         {
-            // Decrement HP
-            health -= 10;
+            lastHitTime = time;
+            takeHit();
         }
     }
 
-    void OnCollisionExit(Collision col)
+    void OnTriggerExit(Collider other)
     {
-        if (col.gameObject.tag == "Weapon")
+        if (other.gameObject.tag == "Weapon")
             Falsify();
     }
 
@@ -91,8 +107,9 @@ public class AIEnemy2Script : MonoBehaviour
     {
         Falsify();
         animator.SetBool("dead", true);
-        // Destroy the object after 2.0f s delay
-        Destroy(gameObject, 2.0f);
+        // Destroy the object after a delay
+        Debug.Log(animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        Destroy(gameObject, animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
     }
 
 }
