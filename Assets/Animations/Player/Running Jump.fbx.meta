@@ -263,7 +263,7 @@ ModelImporter:
     4300010: Jill_HiRes_Gown_Geo
     4300012: Jill_HiRes_Teeth_Geo
     4300014: Jill_HiRes_Head_Geo
-    7400000: running_jump.com
+    7400000: running_jump
     9500000: //RootNode
     13700000: Jill_HiRes_Caruncula_Geo
     13700002: Jill_HiRes_Eyes_Geo
@@ -293,7 +293,9 @@ ModelImporter:
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
       improve retargeting quality.\n\t'Neck1' is inbetween humanoid transforms and
       has rotation animation that will be discarded.\n"
-    animationRetargetingWarnings: 
+    animationRetargetingWarnings: "\nRetargeting quality report for clip 'mixamo.com':\n\tHead
+      average position error 4.0 mm and maximum position error 8.4 mm at time 0: 4
+      (14.8%) Frame 4\n"
     animationDoRetargetingWarnings: 1
     importAnimatedCustomProperties: 0
     importConstraints: 0
@@ -306,7 +308,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: running_jump.com
+      name: running_jump
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 27

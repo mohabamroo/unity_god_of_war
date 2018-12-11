@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovementScript : MonoBehaviour
 {
     Animator anim;
-    float jumpDoubleTapTime;
+    AnimatorClipInfo[] m_CurrentClipInfo;
+    float lastAttackTime;
     bool jumpDoubleTap = true;
     public int health;
     public int rage;
@@ -76,43 +77,40 @@ public class PlayerMovementScript : MonoBehaviour
 
     void handleJumpLogic()
     {
-        if (Input.GetButtonDown("Jump") && jumpDoubleTap)
+        if (Input.GetButtonDown("Jump"))
         {
-            if (Time.time - jumpDoubleTapTime < 0.5f)
+            m_CurrentClipInfo = this.anim.GetCurrentAnimatorClipInfo(0);
+            var clip_name =
+            m_CurrentClipInfo[0].clip.name;
+            if (clip_name == "running_jump")
             {
-                Debug.Log("Double-tapped");
                 this.anim.SetTrigger("double_jump");
-                this.anim.ResetTrigger("jump");
-                jumpDoubleTapTime = 0f;
             }
             else
             {
-                Debug.Log("Single-tapped after space");
                 this.anim.SetTrigger("jump");
-
             }
-            jumpDoubleTap = false;
-        }
-        else
-        {
-
-        }
-        if (Input.GetButtonDown("Jump") && !jumpDoubleTap)
-        {
-            Debug.Log("Signle-tapped");
-            jumpDoubleTap = true;
-            jumpDoubleTapTime = Time.time;
         }
     }
 
     void handleAttackLogic()
     {
+        if (Time.time - lastAttackTime < 0.2f) {
+            return;
+        } else {
+            lastAttackTime = Time.time; 
+        }
         if (Input.GetMouseButton(0))
         {
+            // left
             anim.SetTrigger("attack");
-
         }
 
+        if (Input.GetMouseButton(1))
+        {
+            // right
+            anim.SetTrigger("heavy_attack");
+        }
     }
 
     void handleBlockLogic()
@@ -186,12 +184,12 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void increaseRage()
     {
-        if(this.rage < 30)
+        if (this.rage < 30)
             this.rage += 10;
 
     }
 
-    public void increaseHealthWithChest() 
+    public void increaseHealthWithChest()
     {
         this.health = 100;
     }
