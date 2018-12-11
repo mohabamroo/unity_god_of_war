@@ -11,6 +11,7 @@ public class PlayerMovementScript : MonoBehaviour
     public int rage;
     public float lastHitTime;
     private float time;
+    public bool blocking;
     // Use this for initialization
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerMovementScript : MonoBehaviour
         this.anim = GetComponent<Animator>();
         this.health = 100;
         this.rage = 0;
+        blocking = false;
     }
 
     // Update is called once per frame
@@ -38,6 +40,7 @@ public class PlayerMovementScript : MonoBehaviour
         // this.handleRotation();
         this.handleJumpLogic();
         this.handleAttackLogic();
+        handleBlockLogic();
     }
 
     void handleMovement()
@@ -112,21 +115,37 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
-    public void takeHit(int amount)
+    void handleBlockLogic()
     {
-        // TODO: check blocking
-        this.health -= amount;
-        if (this.health <= 0)
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
         {
-            this.anim.SetTrigger("die");
-            // StartCoroutine("setDie");
-
+            anim.SetTrigger("block");
+            blocking = true;
         }
         else
         {
-            this.anim.SetTrigger("hit");
-            // StartCoroutine("setHit");
+            anim.ResetTrigger("block");
+            blocking = false;
+        }
+    }
 
+    public void takeHit(int amount)
+    {
+        // TODO: check blocking
+        if (!blocking)
+        {
+            this.health -= amount;
+            if (this.health <= 0)
+            {
+                this.anim.SetTrigger("die");
+                // StartCoroutine("setDie");
+            }
+            else
+            {
+                blocking = false;
+                this.anim.SetTrigger("hit");
+                // StartCoroutine("setHit");
+            }
         }
     }
 

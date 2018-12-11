@@ -22,7 +22,7 @@ public class AIEnemy2Script : MonoBehaviour
         lastHitTime = Time.deltaTime;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
-        health = 10;
+        health = 50;
     }
 
     // Update is called once per frame
