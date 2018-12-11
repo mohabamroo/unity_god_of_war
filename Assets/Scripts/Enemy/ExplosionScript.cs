@@ -19,7 +19,6 @@ public class ExplosionScript : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        Debug.Log(other);
         if (other.gameObject.tag == "Player")
             player.GetComponent<PlayerMovementScript>().takeHit(1);
     }
