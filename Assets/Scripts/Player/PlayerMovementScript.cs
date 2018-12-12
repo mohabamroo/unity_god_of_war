@@ -13,6 +13,8 @@ public class PlayerMovementScript : MonoBehaviour
     public float lastHitTime;
     private float time;
     public bool blocking;
+
+    public Collider weaponCollider;
     // Use this for initialization
     void Start()
     {
@@ -21,6 +23,7 @@ public class PlayerMovementScript : MonoBehaviour
         this.anim = GetComponent<Animator>();
         this.health = 100;
         this.rage = 0;
+        DisableWeaponCollider();
         blocking = false;
     }
 
@@ -236,5 +239,17 @@ public class PlayerMovementScript : MonoBehaviour
             this.anim.SetBool("right", false);
         }
         transform.Rotate(0, rotInput, 0);
+    }
+
+    public void EnableWeaponCollider()
+    {
+        weaponCollider.enabled = true;
+        print(weaponCollider.enabled);
+    }
+
+    public void DisableWeaponCollider()
+    {
+        weaponCollider.enabled = false;
+        print(weaponCollider.enabled);
     }
 }

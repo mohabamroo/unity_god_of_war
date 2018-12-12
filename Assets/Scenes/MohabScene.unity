@@ -201,7 +201,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &124281275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,14 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96977d5364fcf49448da88650a4f2ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 124281276}
-  Hips: {fileID: 124281274}
-  nav: {fileID: 0}
-  player: {fileID: 0}
-  health: 0
-  dying_time: 0
-  attack_time: 0
-  angry_time: 0
 --- !u!95 &124281276
 Animator:
   serializedVersion: 3
@@ -1314,7 +1306,7 @@ Prefab:
     - target: {fileID: 195701474993116806, guid: daeb0a745cc9aaf43adb17e0a95263fe,
         type: 2}
       propertyPath: m_StoppingDistance
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 195701474993116806, guid: daeb0a745cc9aaf43adb17e0a95263fe,
         type: 2}
@@ -1418,6 +1410,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114589580328366856, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+        type: 2}
+      propertyPath: weaponCollider
+      value: 
+      objectReference: {fileID: 1792049714}
     m_RemovedComponents:
     - {fileID: 208653761167886410, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: daeb0a745cc9aaf43adb17e0a95263fe, type: 2}
@@ -1520,7 +1517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &693467464
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9490,6 +9487,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abaa12a4608e25f4885d23200b090dca, type: 2}
   m_IsPrefabAsset: 0
+--- !u!65 &1792049714 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 65272322963932140, guid: daeb0a745cc9aaf43adb17e0a95263fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 641740329}
 --- !u!1 &1794899801
 GameObject:
   m_ObjectHideFlags: 0
@@ -9666,20 +9668,6 @@ Prefab:
     - target: {fileID: 4296312060186178, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 65560590007459624, guid: 1bbc504b24cfc984fa8e9410a9e83886,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1753765389604190, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 65560590007459624, guid: 1bbc504b24cfc984fa8e9410a9e83886,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bbc504b24cfc984fa8e9410a9e83886, type: 2}

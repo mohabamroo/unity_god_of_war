@@ -28,6 +28,7 @@ public class AIEnemy2Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        print(health);
         time += Time.deltaTime;
         //Falsify();
         //startPosition = transform.localPosition;
