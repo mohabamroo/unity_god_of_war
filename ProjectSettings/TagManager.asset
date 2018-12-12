@@ -13,6 +13,7 @@ TagManager:
   - WeakPointLeft
   - WeakPointRight
   - WeakPointSpine
+  - Rock
   layers:
   - Default
   - TransparentFX

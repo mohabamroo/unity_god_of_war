@@ -17,6 +17,9 @@ public class ObstacleGeneratorScript : MonoBehaviour {
 
     void generateObstacle()
     {
-        GameObject obstacle = Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(-100, 100), Random.Range(30, 50), Random.Range(-100, 100)), Quaternion.identity);
+        Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(-100, 100), Random.Range(30, 50), Random.Range(-100, 100)), Quaternion.identity);
+        Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(-100, 100), Random.Range(30, 50), Random.Range(-100, 100)), Quaternion.identity);
+        Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(Random.Range(-100, 100), Random.Range(30, 50), Random.Range(-100, 100)), Quaternion.identity);
+
     }
 }

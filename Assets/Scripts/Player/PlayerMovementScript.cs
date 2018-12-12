@@ -129,6 +129,13 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void takeHit(int amount)
     {
+        m_CurrentClipInfo = this.anim.GetCurrentAnimatorClipInfo(0);
+        var clip_name =
+        m_CurrentClipInfo[0].clip.name;
+        if (clip_name == "attack_com" || clip_name == "heavy_attack")
+        {
+            return;
+        }
         // TODO: check blocking
         if (!blocking)
         {
@@ -145,6 +152,22 @@ public class PlayerMovementScript : MonoBehaviour
                 // StartCoroutine("setHit");
             }
         }
+    }
+
+    public void takeObstacleHit()
+    {
+        this.health -= 10;
+            if (this.health <= 0)
+            {
+                this.anim.SetTrigger("die");
+                // StartCoroutine("setDie");
+            }
+            else
+            {
+                blocking = false;
+                this.anim.SetTrigger("hit");
+                // StartCoroutine("setHit");
+            }
     }
 
     IEnumerator setHit()

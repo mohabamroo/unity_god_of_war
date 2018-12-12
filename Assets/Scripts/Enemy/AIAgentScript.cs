@@ -59,7 +59,7 @@ public class AIAgentScript : MonoBehaviour
         if (dist < 2.4)
         {
             this.nav.isStopped = true;
-            if (this.lastAttackTime > 2)
+            if (this.lastAttackTime > 3)
             {
                 this.attackPlayer();
                 Invoke("restAfterAttack", 2.5f);
