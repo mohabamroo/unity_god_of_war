@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BavlyScene.unity
     guid: 7a38184d974369845bcf8151410e3fd7
+  - enabled: 1
+    path: Assets/Scenes/MenusScene.unity
+    guid: 32067e79586d049168b655bd2bedb53b
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: d6ffdede1aae3d54cb9d405ca8319ac7
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: 111f028ddf0943a4f8673ecf0e4e9d23
   m_configObjects: {}

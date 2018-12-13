@@ -15,6 +15,8 @@ public class AIAgentScript : MonoBehaviour
     public float lastHitTime;
     private float lastAttackTime;
     private bool firstAttack;
+    public Collider weaponCollider;
+    public float deadTime;
     // Use this for initialization
     void Start()
     {
@@ -40,40 +42,55 @@ public class AIAgentScript : MonoBehaviour
         if (health <= 0)
         {
             time += Time.deltaTime;
+            deadTime += Time.deltaTime;
             // Trigger dead animation
             animator.SetBool("dead", true);
             // Delay then destroy the object
-            if (time > 1)
+            if (deadTime > 2.5)
             {
-                Destroy(gameObject);
+                var clip_name =
+                 this.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name;
+                var playerScript = player.GetComponent<PlayerMovementScript>();
+                playerScript.increaseXP(50);
+                if (clip_name != "dead")
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
-    void restAfterAttack() {
-        GameObject.FindWithTag("Weapon").GetComponent<Collider>().enabled = false;
+    void restAfterAttack()
+    {
+        weaponCollider.enabled = false;
         animator.SetBool("attack", false);
         this.lastAttackTime = 0;
     }
     void followAndAttackPlayer()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist < 13 && firstAttack) { 
+        if (dist < 13 && firstAttack)
+        {
             //play speech
             firstAttack = false;
             GameObject.Find("SpeechSoundEffect").GetComponent<AudioSource>().Play();
         }
         if (dist < 2)
         {
+            if (!this.animator.GetBool("idle"))
+            {
+                animator.SetBool("idle", true);
+            }
             this.nav.isStopped = true;
-            if (this.lastAttackTime > 3)
+            if (this.lastAttackTime > 2)
             {
                 this.attackPlayer();
                 Invoke("restAfterAttack", 2.5f);
             }
-            else {
+            else
+            {
                 this.lastAttackTime += Time.deltaTime;
                 animator.SetBool("run", false);
-            } 
+            }
         }
         else
         {
@@ -87,7 +104,7 @@ public class AIAgentScript : MonoBehaviour
 
     void attackPlayer()
     {
-        GameObject.FindWithTag("Weapon").GetComponent<Collider>().enabled = true;
+        weaponCollider.enabled = true;
         transform.LookAt(player.transform);
         animator.SetBool("attack", true);
         animator.SetBool("run", false);
@@ -97,15 +114,22 @@ public class AIAgentScript : MonoBehaviour
 
     void takeHit()
     {
-        print("enemy hit");
-        health -= 10;
+        var playerScript = player.GetComponent<PlayerMovementScript>();
+        var damage = playerScript.getRage() == true ? 20 : 10;
+        health -= damage;
+        if (health < 0 && this.deadTime == 0)
+        {
+            this.deadTime = this.time;
+            playerScript.increaseXP(50);
+        }
         this.lastHitTime = this.time;
         this.nav.isStopped = true;
-        // this.player.GetComponent increaseHits();
+        // Increase rage for kratos
+        playerScript.increaseRage();
         animator.SetBool("attack", false);
         animator.SetBool("run", false);
-        animator.SetBool("hit", true);
         animator.SetBool("dead", false);
+        animator.SetBool("hit", true);
         // Decrement HP
         this.nav.isStopped = false;
 
@@ -125,12 +149,9 @@ public class AIAgentScript : MonoBehaviour
         var timeDiff = this.time - this.lastHitTime;
         //print("Time: ");
         //(timeDiff);
-        if (col.tag == "Weapon" && timeDiff > 1)
+        if (col.tag == "PlayerWeapon" && timeDiff > 1)
         {
             this.takeHit();
-            // Increase rage for kratos
-            GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerMovementScript>().increaseRage();
-
         }
     }
 
@@ -145,7 +166,7 @@ public class AIAgentScript : MonoBehaviour
             animator.SetBool("dead", false);
         }
 
-        if (col.gameObject.tag == "Weapon")
+        if (col.gameObject.tag == "PlayerWeapon")
         {
             animator.SetBool("run", true);
             animator.SetBool("attack", false);

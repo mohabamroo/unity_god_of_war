@@ -53,7 +53,7 @@ public class AIEnemy2Script : MonoBehaviour
         }
 
         transform.LookAt(player);
-        if (nav.remainingDistance<=GetComponent<enemy2Script>().maxDistance)
+        if (nav.remainingDistance <= GetComponent<enemy2Script>().maxDistance)
             Attack();
         else
             Run();
@@ -61,7 +61,9 @@ public class AIEnemy2Script : MonoBehaviour
 
     void takeHit()
     {
-        health -= 10;
+        var playerScript = player.GetComponent<PlayerMovementScript>();
+        var damage = playerScript.getRage() == true ? 20 : 10;
+        health -= damage;
         nav.isStopped = true;
         Hit();
         // Decrement HP
@@ -73,7 +75,7 @@ public class AIEnemy2Script : MonoBehaviour
     {
         var timeDiff = time - lastHitTime;
         // Player attacked enemy, decrement HP and trigger the hit animation
-        if (other.gameObject.tag == "Weapon" && health > 0 && timeDiff > 1.3f)
+        if (other.gameObject.tag == "PlayerWeapon" && health > 0 && timeDiff > 1.3f)
         {
             lastHitTime = time;
             takeHit();
@@ -82,7 +84,7 @@ public class AIEnemy2Script : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Weapon")
+        if (other.gameObject.tag == "PlayerWeapon")
             Falsify();
     }
 

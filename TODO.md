@@ -1,0 +1,6 @@
+- Make sure of hist sounds for all characters
+- test rage damage
+- load credits scene on end, check state script
+- change rage meter UI (just like health bar)
+- Upgrade SKills is not implemented
+- rage sound

@@ -15,6 +15,9 @@ TagManager:
   - WeakPointSpine
   - Rock
   - SoundEffect
+  - HealthBar
+  - PlayerWeapon
+  - StateHolder
   layers:
   - Default
   - TransparentFX

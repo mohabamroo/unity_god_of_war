@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovementScript : MonoBehaviour
 {
     Animator anim;
     AnimatorClipInfo[] m_CurrentClipInfo;
     float lastAttackTime;
+    public int currentLevelXP;
+    public int totalXP = 0;
     bool jumpDoubleTap = true;
     public int health;
     public int rage;
     public float lastHitTime;
     private float time;
     public bool blocking;
+    public int rageLimit;
+    private float deadTime;
+    float rageTime;
+    public bool rageActivated = false;
 
     public Collider weaponCollider;
     // Use this for initialization
@@ -31,20 +39,37 @@ public class PlayerMovementScript : MonoBehaviour
     void Update()
     {
         this.time += Time.deltaTime;
-        if (health < 0)
+        if (health < 1)
         {
-            return;
+            this.deadTime += Time.deltaTime;
+            print("dead time for player");
+            print(deadTime);
+            if (this.deadTime > 4.5f)
+            {
+                this.loadGameOver();
+            }
         }
+
+        this.checkRageMoodTime();
         this.updatePosition();
+    }
+
+    void checkRageMoodTime()
+    {
+        if (this.rageActivated && ((this.rageTime - this.time) > 5))
+        {
+            this.rageActivated = false;
+        }
     }
 
     void updatePosition()
     {
         this.handleMovement();
-        // this.handleRotation();
+        this.handleRotation();
         this.handleJumpLogic();
         this.handleAttackLogic();
-        handleBlockLogic();
+        this.handleBlockLogic();
+        this.handleRageLogic();
     }
 
     void handleMovement()
@@ -98,21 +123,36 @@ public class PlayerMovementScript : MonoBehaviour
 
     void handleAttackLogic()
     {
-        if (Time.time - lastAttackTime < 0.2f) {
+        if (Time.time - lastAttackTime < 0.2f)
+        {
             return;
-        } else {
-            lastAttackTime = Time.time; 
         }
-        if (Input.GetMouseButton(0))
+        else
         {
-            // left
-            anim.SetTrigger("attack");
-        }
 
-        if (Input.GetMouseButton(1))
+            lastAttackTime = Time.time;
+            if (Input.GetMouseButton(0))
+            {
+                // left
+                // this.lookAtEnemy();
+                anim.SetTrigger("attack");
+            }
+
+            if (Input.GetMouseButton(1))
+            {
+                // right
+                this.lookAtEnemy();
+                anim.SetTrigger("heavy_attack");
+            }
+        }
+    }
+
+    void lookAtEnemy()
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies.Length > 0)
         {
-            // right
-            anim.SetTrigger("heavy_attack");
+            transform.LookAt(enemies[0].transform);
         }
     }
 
@@ -142,11 +182,12 @@ public class PlayerMovementScript : MonoBehaviour
         // TODO: check blocking
         if (!blocking)
         {
+            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().getHit();
             this.health -= amount;
             if (this.health <= 0)
             {
                 this.anim.SetTrigger("die");
-                // StartCoroutine("setDie");
+                deadTime = 0f;
             }
             else
             {
@@ -160,17 +201,17 @@ public class PlayerMovementScript : MonoBehaviour
     public void takeObstacleHit()
     {
         this.health -= 10;
-            if (this.health <= 0)
-            {
-                this.anim.SetTrigger("die");
-                // StartCoroutine("setDie");
-            }
-            else
-            {
-                blocking = false;
-                this.anim.SetTrigger("hit");
-                // StartCoroutine("setHit");
-            }
+        if (this.health <= 0)
+        {
+            this.anim.SetTrigger("die");
+            // StartCoroutine("setDie");
+        }
+        else
+        {
+            blocking = false;
+            this.anim.SetTrigger("hit");
+            // StartCoroutine("setHit");
+        }
     }
 
     IEnumerator setHit()
@@ -200,6 +241,11 @@ public class PlayerMovementScript : MonoBehaviour
         else
         {
             //print("player was not attacked");
+            if (enemy.CompareTag("WeakPoint"))
+            {
+                print("player should be hit by weak point");
+            }
+
         }
     }
 
@@ -210,8 +256,11 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void increaseRage()
     {
-        if (this.rage < 30)
-            this.rage += 10;
+        this.rage += 10;
+        if (this.rage > this.rageLimit)
+        {
+            this.rage = this.rageLimit;
+        }
 
     }
 
@@ -222,23 +271,18 @@ public class PlayerMovementScript : MonoBehaviour
 
     void handleRotation()
     {
-        var rotInput = Input.GetAxis("Horizontal");
-        if (rotInput > 0)
+        var rotAngle = 5;
+        if (Input.GetKey(KeyCode.A))
         {
-            this.anim.SetBool("right", true);
-            this.anim.SetBool("left", false);
+            // rotate left
+            transform.Rotate(0, -rotAngle, 0);
+
         }
-        if (rotInput < 0)
+        if (Input.GetKey(KeyCode.D))
         {
-            this.anim.SetBool("left", true);
-            this.anim.SetBool("right", false);
+            // rotate right
+            transform.Rotate(0, rotAngle, 0);
         }
-        if (rotInput == 0)
-        {
-            this.anim.SetBool("left", false);
-            this.anim.SetBool("right", false);
-        }
-        transform.Rotate(0, rotInput, 0);
     }
 
     public void EnableWeaponCollider()
@@ -251,5 +295,60 @@ public class PlayerMovementScript : MonoBehaviour
     {
         weaponCollider.enabled = false;
         print(weaponCollider.enabled);
+    }
+
+    public void increaseXP(int points)
+    {
+        this.currentLevelXP += points;
+        this.totalXP += points;
+        if (this.currentLevelXP >= 500)
+        {
+            this.currentLevelXP = 0;
+            GameObject.FindGameObjectWithTag("StateHolder").GetComponent<StateScript>().loadNextLevel();
+        }
+    }
+
+    void handleRageLogic()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (this.rage < this.rageLimit)
+            {
+                print("Not enough rage");
+                print(this.rage);
+            }
+            else
+            {
+                this.activateRage();
+                print("activating rage");
+            }
+        }
+    }
+    void activateRage()
+    {
+        // TODO: attach rage sound to animation
+        this.rageTime = this.time;
+        this.anim.SetTrigger("rage");
+        this.rageActivated = true;
+        this.rage = 0;
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (var enemy in enemies)
+        {
+            float dist = Vector3.Distance(transform.position, enemy.transform.position);
+            if (dist < 2)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, enemy.transform.position, -1 * Time.deltaTime);
+            }
+        }
+    }
+
+    void loadGameOver()
+    {
+        SceneManager.LoadScene("GameOverScene");
+    }
+
+    public bool getRage()
+    {
+        return this.rageActivated;
     }
 }

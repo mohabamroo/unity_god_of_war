@@ -8,7 +8,7 @@ public class WeakPoint : MonoBehaviour {
     GameObject boss;
 	// Use this for initialization
 	void Start () {
-        boss = GameObject.FindGameObjectsWithTag("Boss")[0];
+        boss = GameObject.FindGameObjectWithTag("Boss");
     }
 	
 	// Update is called once per frame
@@ -19,12 +19,9 @@ public class WeakPoint : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerWeapon"))
         {
-
             boss.GetComponent<BossScript>().incrementHits(weakPoint);
         }
     }
-
-   
 }

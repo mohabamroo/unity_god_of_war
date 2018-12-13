@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 3ec66a081123ebb439a0dd580cc4114a
+timeCreated: 1512853693
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: XXII ARABIAN-ONENIGHTSTAND
+  fontNames:
+  - XXII ARABIAN-ONENIGHTSTAND
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
