@@ -15,10 +15,12 @@ public class AIEnemy2Script : MonoBehaviour
     public int health;
     public float lastHitTime;
     private float time;
+    private bool firstAttack;
 
     // Use this for initialization
     void Start()
     {
+        firstAttack = true;
         lastHitTime = Time.deltaTime;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
@@ -36,7 +38,13 @@ public class AIEnemy2Script : MonoBehaviour
         nav.SetDestination(player.position);
         // Stopping distance for the enemy to throw fireballs
         nav.stoppingDistance = GetComponent<enemy2Script>().maxDistance;
-
+        float dist = Vector3.Distance(player.position, transform.position);
+        if (dist < 13 && firstAttack)
+        {
+            //play speech
+            firstAttack = false;
+            GameObject.Find("SpeechSoundEffect").GetComponent<AudioSource>().Play();
+        }
         if (health <= 0)
         {
             // Trigger dead animation

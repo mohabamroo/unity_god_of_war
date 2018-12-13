@@ -14,8 +14,7 @@ public class AIAgentScript : MonoBehaviour
     private float time;
     public float lastHitTime;
     private float lastAttackTime;
-
-
+    private bool firstAttack;
     // Use this for initialization
     void Start()
     {
@@ -26,6 +25,7 @@ public class AIAgentScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         health = 100;
+        firstAttack = true;
     }
 
     // Update is called once per frame
@@ -50,13 +50,19 @@ public class AIAgentScript : MonoBehaviour
         }
     }
     void restAfterAttack() {
+        GameObject.FindWithTag("Weapon").GetComponent<Collider>().enabled = false;
         animator.SetBool("attack", false);
         this.lastAttackTime = 0;
     }
     void followAndAttackPlayer()
     {
         float dist = Vector3.Distance(player.position, transform.position);
-        if (dist < 2.4)
+        if (dist < 13 && firstAttack) { 
+            //play speech
+            firstAttack = false;
+            GameObject.Find("SpeechSoundEffect").GetComponent<AudioSource>().Play();
+        }
+        if (dist < 2)
         {
             this.nav.isStopped = true;
             if (this.lastAttackTime > 3)
@@ -81,6 +87,7 @@ public class AIAgentScript : MonoBehaviour
 
     void attackPlayer()
     {
+        GameObject.FindWithTag("Weapon").GetComponent<Collider>().enabled = true;
         transform.LookAt(player.transform);
         animator.SetBool("attack", true);
         animator.SetBool("run", false);
