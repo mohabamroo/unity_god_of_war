@@ -23,6 +23,8 @@ public class PlayerMovementScript : MonoBehaviour
     public bool rageActivated = false;
 
     public Collider weaponCollider;
+
+    public GameObject gameplayUI;
     // Use this for initialization
     void Start()
     {
@@ -52,6 +54,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         this.checkRageMoodTime();
         this.updatePosition();
+
     }
 
     void checkRageMoodTime()
