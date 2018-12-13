@@ -149,7 +149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24941757, y: 0.049000002}
   m_AnchorMax: {x: 0.76954085, y: 0.21400002}
-  m_AnchoredPosition: {x: -0.5749512, y: 3.500061}
+  m_AnchoredPosition: {x: -0.5749512, y: 3.5000687}
   m_SizeDelta: {x: 1.1499634, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &41808721
@@ -4208,7 +4208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24941757, y: 0.049000002}
   m_AnchorMax: {x: 0.76954085, y: 0.21400002}
-  m_AnchoredPosition: {x: -0.5750122, y: 3.500061}
+  m_AnchoredPosition: {x: -0.5750122, y: 3.5000687}
   m_SizeDelta: {x: 1.15, y: -7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393513157
@@ -5646,6 +5646,11 @@ Prefab:
     - target: {fileID: 4862905105811620, guid: 63c6e6dee21a97c44bd7e08121ee133a, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114094262631421314, guid: 63c6e6dee21a97c44bd7e08121ee133a,
+        type: 2}
+      propertyPath: weakPoint
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63c6e6dee21a97c44bd7e08121ee133a, type: 2}

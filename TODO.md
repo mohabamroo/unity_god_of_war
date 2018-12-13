@@ -4,3 +4,11 @@
 - change rage meter UI (just like health bar)
 - Upgrade SKills is not implemented
 - rage sound
+- Boss weak points, test both legs are hit
+- WE need new animation for third attack for Boss, punching is no good
+- camera movement script, current one is shit
+- Player never gets hit by boss, maybe because weak point colliders are triggers, big problem there
+- menus design is not consistent
+- Menus soundtracks
+- AUDIO MIXER, we already have one we just need to attach each sound we have to one of the mixer channels
+- Control Audio mixer is not implemnted t2rebn
