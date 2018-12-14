@@ -44,8 +44,7 @@ public class StateScript : MonoBehaviour
         {
             this.loadNextLevel();
         }
-
-        //UpdateText();
+        UpdateText();
     }
 
     public void loadNextLevel()
