@@ -1,3 +1,4 @@
+# don't panic, we still have time I guess... List
 - Make sure of hist sounds for all characters
 - test rage damage
 - load credits scene on end, check state script
