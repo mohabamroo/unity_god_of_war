@@ -104,14 +104,9 @@ public class CanvasScript : MonoBehaviour {
 
     public void QuitToMainMenu()
     {
-        //MainMenuScreen.SetActive(true);
-        //OptionsScreen.SetActive(false);
-        //GameScreen.SetActive(false);
-        //PauseScreen.SetActive(false);
-        //SkillUpgradeScreen.SetActive(false);
-        //GameOverScreen.SetActive(false);
-        //HowToPlayScreen.SetActive(false);
-        //CreditsScreen.SetActive(false);
+        Time.timeScale = 0;
+        player.GetComponent<FlyCameraScript>().enabled = false;
+        PlayerPrefs.SetInt("Paused", 1);
     }
 
     public void ResumeGame()
