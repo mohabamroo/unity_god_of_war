@@ -136,12 +136,12 @@ public class CanvasScript : MonoBehaviour {
 
     public void SetSpeechLevel(float speechVol)
     {
-        mixer.SetFloat("speechVol", speechVol);
+        mixer.SetFloat("speechVol", Mathf.Log10(speechVol) * 20);
     }
 
     public void SetEffectsLevel(float sfxVol)
     {
-        mixer.SetFloat("sfxVol", sfxVol);
+        mixer.SetFloat("sfxVol", Mathf.Log10(sfxVol) * 20);
     }
 
     public void RestartLevel()
