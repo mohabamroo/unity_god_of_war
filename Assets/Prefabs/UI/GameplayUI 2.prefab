@@ -4029,7 +4029,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114995164443925884}
-        m_MethodName: pauseGame
+        m_MethodName: resumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5364,18 +5364,27 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3ec66a081123ebb439a0dd580cc4114a, type: 3}
-    m_FontSize: 70
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 70
+    m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 1
+    m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "How to Play\ndetails to \nbe\nadded\nhere\n"
+  m_Text: 'The game is divided into 2 levels, normal level and boss level
+
+    Normal level is where you are faced by many enemies and you will have to kill
+    all enemies in order to move on to the next level where you will face the BOSS.
+    You can walk forwards or backwards using ''W'' and ''S'' keys, run using shift
+    with one of the walking keys, jump by pressing the space bar and double jump by
+    double-pressing the spacebar. You have 2 types of attacks that you can perform
+    a light attack by pressing the mouse''s left click, and a heavy one performed
+    by pressing the mouse''s right click. You have 3 skills that you can upgrade;
+    your health, attack damage and movement speed.'
 --- !u!114 &114744895295806744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6331,6 +6340,7 @@ MonoBehaviour:
   menuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
   musicSource: {fileID: 0}
+  stateHolder: {fileID: 0}
 --- !u!114 &114906894467903350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6369,6 +6379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c16c249af147498a696b8d4c6afd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateHolder: {fileID: 0}
   mixer: {fileID: 24100000, guid: 7718d4039f2034f4e82f3f662002f4d8, type: 2}
   player: {fileID: 0}
   creditsAnim: {fileID: 95944087984524536}
@@ -6846,6 +6857,7 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: 0716c3404c954ee468997c6d5dcd7e1f, type: 3}
   gameMusic: {fileID: 8300000, guid: 2eb8c48d07c0ee04a9360c303b9870a1, type: 3}
   musicSource: {fileID: 0}
+  stateHolder: {fileID: 0}
 --- !u!222 &222001880971750112
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -8873,7 +8885,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 149}
   m_SizeDelta: {x: 800, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224547254694361918
@@ -9656,7 +9668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -19}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224849044188983750
