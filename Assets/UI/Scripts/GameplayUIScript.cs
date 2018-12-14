@@ -70,24 +70,30 @@ public class GameplayUIScript : MonoBehaviour {
 
 	public void pauseGame()
     {
-        player.GetComponent<FlyCameraScript>().enabled = !player.GetComponent<FlyCameraScript>().enabled;
-        print(Time.timeScale);
-        if (Time.timeScale == 1){
-			Time.timeScale = 0;
-            musicSource.clip = menuMusic;
-            musicSource.Play();
-        }
-		else{
-			Time.timeScale = 1;
-            musicSource.clip = gameMusic;
-            musicSource.Play();
-        }
+        player.GetComponent<FlyCameraScript>().enabled = false;
+    
+        Time.timeScale = 0;
+        musicSource.clip = menuMusic;
+        musicSource.Play();
+        gamePanel.SetActive(false);
+        pausePanel.SetActive(true);
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        pausePanel.SetActive(!pausePanel.activeSelf);
-        gamePanel.SetActive(!gamePanel.activeSelf);
+       
     }
 
+    public void resumeGame() {
+        player.GetComponent<FlyCameraScript>().enabled = true;
+        Time.timeScale = 1;
+        musicSource.clip = gameMusic;
+        musicSource.Play();
+        pausePanel.SetActive(false);
+        gamePanel.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+     
+    }
 	public void restartLevel(){
 		Time.timeScale = 1;
         //int level = PlayerPrefs.GetInt("level");
