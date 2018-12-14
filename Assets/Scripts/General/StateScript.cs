@@ -5,13 +5,28 @@ using UnityEngine.SceneManagement;
 public class StateScript : MonoBehaviour
 {
     public int level = 0;
+    public int skillPts;
+
+    public float movementPts;
+    public float attackPts;
+    public float healthPts;
     // Use this for initialization
     Scene currentScene;
+
+    GameObject player;
 
     void Start()
     {
         this.currentScene = SceneManager.GetActiveScene();
         this.level++;
+        skillPts = 0;
+
+        movementPts = 0;
+        attackPts = 0;
+        healthPts = 0;
+
+        player = GameObject.FindWithTag("Player");
+
         DontDestroyOnLoad(transform.gameObject);
     }
 
@@ -26,6 +41,8 @@ public class StateScript : MonoBehaviour
 
     public void loadNextLevel()
     {
+        level++;
+        skillPts += 1;
         if (currentScene.name == "BossScene")
         {
             // TODO: load credits scene
@@ -37,5 +54,26 @@ public class StateScript : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("BossScene");
 
         }
+    }
+
+    public void IncreaseMovementPts()
+    {
+        player.GetComponent<PlayerMovementScript>().UpgradeSpeed();
+        movementPts += 1f;
+        skillPts -= 1;
+    }
+
+    public void IncreaseAttackPts()
+    {
+        player.GetComponent<PlayerMovementScript>().UpgradeAttackPoints();
+        attackPts += 1;
+        skillPts -= 1;
+    }
+
+    public void IncreaseHealthPts()
+    {
+        player.GetComponent<PlayerMovementScript>().UpgradeHealthPoints();
+        healthPts += 1;
+        skillPts -= 1;
     }
 }

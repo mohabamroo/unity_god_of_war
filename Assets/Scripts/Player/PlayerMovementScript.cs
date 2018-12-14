@@ -25,6 +25,11 @@ public class PlayerMovementScript : MonoBehaviour
     public Collider weaponCollider;
 
     public GameObject gameplayUI;
+
+    public float damageL;
+    public float damageH;
+
+    GameObject stateHolder;
     // Use this for initialization
     void Start()
     {
@@ -35,6 +40,10 @@ public class PlayerMovementScript : MonoBehaviour
         this.rage = 0;
         DisableWeaponCollider();
         blocking = false;
+        stateHolder = GameObject.FindGameObjectWithTag("StateHolder");
+
+        damageH = 30.0f;
+        damageL = 10.0f;
     }
 
     // Update is called once per frame
@@ -54,7 +63,6 @@ public class PlayerMovementScript : MonoBehaviour
 
         this.checkRageMoodTime();
         this.updatePosition();
-
     }
 
     void checkRageMoodTime()
@@ -353,5 +361,21 @@ public class PlayerMovementScript : MonoBehaviour
     public bool getRage()
     {
         return this.rageActivated;
+    }
+
+    public void UpgradeSpeed()
+    {
+        anim.speed *= 1.1f;
+    }
+
+    public void UpgradeHealthPoints()
+    {
+        health += 10;
+    }
+
+    public void UpgradeAttackPoints()
+    {
+        damageH *= 1.1f;
+        damageL *= 1.1f;
     }
 }

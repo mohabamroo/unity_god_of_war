@@ -115,8 +115,9 @@ public class AIAgentScript : MonoBehaviour
     void takeHit()
     {
         var playerScript = player.GetComponent<PlayerMovementScript>();
-        var damage = playerScript.getRage() == true ? 20 : 10;
-        health -= damage;
+        var attackDamage = playerScript.damageL;
+        var damage = playerScript.getRage() == true ? attackDamage * 2 : attackDamage;
+        health -= (int)damage;
         if (health < 0 && this.deadTime == 0)
         {
             this.deadTime = this.time;
