@@ -31,6 +31,7 @@ public class CanvasScript : MonoBehaviour {
 
     GameObject gameOverScreen;
     GameObject gameScreen;
+    GameObject creditsScreen;
 
     private void Awake()
     {
@@ -44,6 +45,8 @@ public class CanvasScript : MonoBehaviour {
     {
         gameOverScreen = GameObject.Find("GameplayUI").transform.Find("GameOverPanel").gameObject;
         gameScreen = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
+        creditsScreen = GameObject.Find("GameplayUI").transform.Find("CreditsScreen").gameObject;
+        print(creditsScreen);
         //MainMenuScreen = this.gameObject.transform.GetChild(0).gameObject;
         //OptionsScreen = this.gameObject.transform.GetChild(1).gameObject;
         //GameScreen = this.gameObject.transform.GetChild(2).gameObject;
@@ -92,6 +95,12 @@ public class CanvasScript : MonoBehaviour {
 
     public void OpenCredits()
     {
+        Time.timeScale = 0;
+        gameScreen = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
+        creditsScreen = GameObject.Find("GameplayUI").transform.Find("CreditsScreen").gameObject;
+        creditsScreen.SetActive(true);
+        gameScreen.SetActive(false);
+        creditsAnim = creditsScreen.transform.Find("Credits").GetComponent<Animator>();
         creditsAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
