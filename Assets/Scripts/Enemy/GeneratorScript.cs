@@ -9,10 +9,14 @@ public class GeneratorScript : MonoBehaviour
     public Transform[] enemies;
     public int interval = 70;
     public int enemiesLimit = 20;
+    public int maxWaves = 3;
+    public int enemiesLimitPerWave = 4;
+    public int currentWave;
 
     // Use this for initialization
     void Start()
     {
+        this.currentWave = 0;
         time = 50;
     }
 
@@ -21,7 +25,7 @@ public class GeneratorScript : MonoBehaviour
     {
         time += Time.deltaTime;
 
-        if (time > this.interval)
+        if (time > this.interval && this.currentWave < this.maxWaves)
         {
             SpawnWave();
             time = 0;
@@ -30,8 +34,10 @@ public class GeneratorScript : MonoBehaviour
 
     void SpawnWave()
     {
+        this.currentWave++;
+        print("Loading wave: " + this.currentWave.ToString());
         int y = 0;
-        for (var i = 0; i < 5; i++)
+        for (var i = 1; i < this.enemiesLimitPerWave; i++)
         {
             var currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
             if (currentEnemies.Length < this.enemiesLimit)
