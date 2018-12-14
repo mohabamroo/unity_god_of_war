@@ -16,4 +16,5 @@
 - ✔️ Invincible cheat for kratos
 - ✔️ health bar recover on chest used, chest sound
 - ✔️ heavy attack and light attack effect on enemy
+- ✔️ waves logic
 - nav mush surface problem: enemies walk is kinda weird
