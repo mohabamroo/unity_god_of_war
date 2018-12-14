@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class StateScript : MonoBehaviour
 {
@@ -15,6 +16,11 @@ public class StateScript : MonoBehaviour
 
     GameObject player;
 
+    public Text pointsText;
+    public Text speedText;
+    public Text healthText;
+    public Text damageText;
+
     void Start()
     {
         this.currentScene = SceneManager.GetActiveScene();
@@ -28,6 +34,7 @@ public class StateScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
 
         DontDestroyOnLoad(transform.gameObject);
+        UpdateText();
     }
 
     // Update is called once per frame
@@ -37,6 +44,8 @@ public class StateScript : MonoBehaviour
         {
             this.loadNextLevel();
         }
+
+        //UpdateText();
     }
 
     public void loadNextLevel()
@@ -58,22 +67,42 @@ public class StateScript : MonoBehaviour
 
     public void IncreaseMovementPts()
     {
-        player.GetComponent<PlayerMovementScript>().UpgradeSpeed();
-        movementPts += 1f;
-        skillPts -= 1;
+        if (skillPts > 0)
+        {
+            player.GetComponent<PlayerMovementScript>().UpgradeSpeed();
+            movementPts += 1f;
+            skillPts -= 1;
+            UpdateText();
+        }
     }
 
     public void IncreaseAttackPts()
     {
-        player.GetComponent<PlayerMovementScript>().UpgradeAttackPoints();
-        attackPts += 1;
-        skillPts -= 1;
+        if (skillPts > 0)
+        {
+            player.GetComponent<PlayerMovementScript>().UpgradeAttackPoints();
+            attackPts += 1;
+            skillPts -= 1;
+            UpdateText();
+        }
     }
 
     public void IncreaseHealthPts()
     {
-        player.GetComponent<PlayerMovementScript>().UpgradeHealthPoints();
-        healthPts += 1;
-        skillPts -= 1;
+        if (skillPts > 0)
+        {
+            player.GetComponent<PlayerMovementScript>().UpgradeHealthPoints();
+            healthPts += 1;
+            skillPts -= 1;
+            UpdateText();
+        }
+    }
+
+    public void UpdateText()
+    {
+        pointsText.text = "Available Skill Points: " + skillPts;
+        speedText.text = "Increases movement speed by 10% \nCurrent factor is " + (1 + (0.1 * movementPts));
+        damageText.text = "Increases damage by 10% \nCurrent factor is " + (1 + (0.1 * attackPts));
+        healthText.text = "Increases health by 10% \nCurrent value is " + player.GetComponent<PlayerMovementScript>().health+"/100";
     }
 }
