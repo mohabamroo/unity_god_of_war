@@ -25,10 +25,11 @@ public class BossScript : MonoBehaviour
     public int maxHealth;
     float deadTime;
 
+    public GameObject gameplayUI;
+
     // Use this for initialization
     void Start()
     {
-
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Debug.Log(player);
         nav = GetComponent<NavMeshAgent>();
@@ -61,6 +62,7 @@ public class BossScript : MonoBehaviour
             // Delay then destroy the object
             if (this.deadTime > 3f)
             {
+                gameplayUI.GetComponent<CanvasScript>().OpenCredits();
                 Destroy(gameObject);
             }
             return;

@@ -2241,6 +2241,7 @@ MonoBehaviour:
   weakPoint2Hits: 0
   weakPoint3Hits: 0
   maxHealth: 500
+  gameplayUI: {fileID: 1368044109294474, guid: 1aa1d9240184d4d389731e2574700941, type: 2}
 --- !u!114 &114974664042370984
 MonoBehaviour:
   m_ObjectHideFlags: 1

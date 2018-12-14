@@ -95,7 +95,7 @@ public class GameplayUIScript : MonoBehaviour {
 		Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 		gameOverPanel.SetActive(true);
-		SOTBar.SetActive (false);
+		SOTBar.SetActive (false); 
 		questPanel.SetActive (false);
 		mapCollectiblesPanel.SetActive (false);
 		minimapPanel.SetActive(false);

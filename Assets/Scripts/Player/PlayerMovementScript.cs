@@ -60,7 +60,7 @@ public class PlayerMovementScript : MonoBehaviour
             print(deadTime);
             if (this.deadTime > 4.5f)
             {
-                this.loadGameOver();
+                gameplayUI.GetComponent<CanvasScript>().GameOver();
             }
         }
         this.checkCheatCodes();
