@@ -19,6 +19,7 @@ TagManager:
   - PlayerWeapon
   - StateHolder
   - RageBar
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -29,6 +29,10 @@ public class CanvasScript : MonoBehaviour {
 
     public Animator creditsAnim;
 
+    GameObject gameOverScreen;
+    GameObject gameScreen;
+    GameObject creditsScreen;
+
     private void Awake()
     {
         Time.timeScale = 0;
@@ -37,7 +41,12 @@ public class CanvasScript : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        gameOverScreen = GameObject.Find("GameplayUI").transform.Find("GameOverPanel").gameObject;
+        gameScreen = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
+        creditsScreen = GameObject.Find("GameplayUI").transform.Find("CreditsScreen").gameObject;
+        print(creditsScreen);
         //MainMenuScreen = this.gameObject.transform.GetChild(0).gameObject;
         //OptionsScreen = this.gameObject.transform.GetChild(1).gameObject;
         //GameScreen = this.gameObject.transform.GetChild(2).gameObject;
@@ -86,6 +95,12 @@ public class CanvasScript : MonoBehaviour {
 
     public void OpenCredits()
     {
+        Time.timeScale = 0;
+        gameScreen = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
+        creditsScreen = GameObject.Find("GameplayUI").transform.Find("CreditsScreen").gameObject;
+        creditsScreen.SetActive(true);
+        gameScreen.SetActive(false);
+        creditsAnim = creditsScreen.transform.Find("Credits").GetComponent<Animator>();
         creditsAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
@@ -142,6 +157,19 @@ public class CanvasScript : MonoBehaviour {
     public void SetEffectsLevel(float sfxVol)
     {
         mixer.SetFloat("sfxVol", Mathf.Log10(sfxVol) * 20);
+    }
+
+    public void GameOver()
+    {
+        player.GetComponent<FlyCameraScript>().enabled = false;
+        Time.timeScale = 0;
+        gameOverScreen.SetActive(true);
+        gameScreen.SetActive(false);
+    }
+
+    public void RestartScene()
+    {
+        SceneManager.LoadScene("MohabScene");
     }
 
     public void RestartLevel()
