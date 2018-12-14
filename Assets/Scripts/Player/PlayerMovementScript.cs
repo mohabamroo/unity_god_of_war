@@ -168,21 +168,26 @@ public class PlayerMovementScript : MonoBehaviour
             {
                 // left
                 // this.lookAtEnemy();
+                this.EnableWeaponCollider();
                 this.activeDamage = this.damageL;
                 anim.SetTrigger("attack");
+                Invoke("DisableWeaponCollider", 1f);
             }
 
             if (Input.GetMouseButton(1))
             {
                 // right
                 // this.lookAtEnemy();
+                this.EnableWeaponCollider();
                 this.activeDamage = this.damageH;
                 anim.SetTrigger("heavy_attack");
+                Invoke("DisableWeaponCollider", 1f);
             }
         }
     }
 
-    public float getActiveDamage() {
+    public float getActiveDamage()
+    {
         return this.activeDamage;
     }
 
@@ -225,7 +230,12 @@ public class PlayerMovementScript : MonoBehaviour
         // TODO: check blocking
         if (!blocking)
         {
-            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().getHit(amount);
+            try {
+                GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().getHit(amount);
+            }
+            catch {
+                // do nothing
+            }
             this.health -= amount;
             if (this.health <= 0)
             {
@@ -419,4 +429,6 @@ public class PlayerMovementScript : MonoBehaviour
         damageH *= 1.1f;
         damageL *= 1.1f;
     }
+
+
 }

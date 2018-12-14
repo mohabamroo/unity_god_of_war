@@ -22,7 +22,7 @@ public class BossScript : MonoBehaviour
     bool[] allowedAttacks;
     bool allAttacksBlocked;
     float lastHitTime;
-    public int maxHealth = 100;
+    public int maxHealth;
     float deadTime;
 
     // Use this for initialization
@@ -33,7 +33,7 @@ public class BossScript : MonoBehaviour
         Debug.Log(player);
         nav = GetComponent<NavMeshAgent>();
         nav.ResetPath();
-        health = 100;
+        this.health = this.maxHealth;
         nav.SetDestination(player.position);
         attack_time = 5.0f;
         angry_time = 11.0f;
@@ -59,7 +59,7 @@ public class BossScript : MonoBehaviour
             this.deadTime += Time.deltaTime;
             this.nav.isStopped = true;
             // Delay then destroy the object
-            if (this.deadTime > 4.0f)
+            if (this.deadTime > 3f)
             {
                 Destroy(gameObject);
             }
