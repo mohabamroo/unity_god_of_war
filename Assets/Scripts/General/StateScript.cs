@@ -25,7 +25,7 @@ public class StateScript : MonoBehaviour
     {
         this.currentScene = SceneManager.GetActiveScene();
         this.level++;
-        skillPts = 0;
+        skillPts = 1;
 
         movementPts = 0;
         attackPts = 0;
@@ -45,6 +45,26 @@ public class StateScript : MonoBehaviour
             this.loadNextLevel();
         }
         UpdateText();
+        int totalXP = player.GetComponent<PlayerMovementScript>().totalXP;
+        if (totalXP > 4000)
+            skillPts = 5;
+        else
+        {
+            if (totalXP > 2000)
+                skillPts = 4;
+            else
+            {
+                if (totalXP > 1000)
+                    skillPts = 3;
+                else
+                {
+                    if (totalXP > 500)
+                        skillPts = 2;
+                    else
+                        skillPts = 1;
+                }
+            }
+        }
     }
 
     public void loadNextLevel()
@@ -66,42 +86,46 @@ public class StateScript : MonoBehaviour
 
     public void IncreaseMovementPts()
     {
-        if (skillPts > 0)
+        float ava = skillPts - (movementPts + attackPts + healthPts);
+        if (ava > 0)
         {
             player.GetComponent<PlayerMovementScript>().UpgradeSpeed();
             movementPts += 1f;
-            skillPts -= 1;
+            //skillPts -= 1;
             UpdateText();
         }
     }
 
     public void IncreaseAttackPts()
     {
-        if (skillPts > 0)
+        float ava = skillPts - (movementPts + attackPts + healthPts);
+        if (ava > 0)
         {
             player.GetComponent<PlayerMovementScript>().UpgradeAttackPoints();
             attackPts += 1;
-            skillPts -= 1;
+            //skillPts -= 1;
             UpdateText();
         }
     }
 
     public void IncreaseHealthPts()
     {
-        if (skillPts > 0)
+        float ava = skillPts - (movementPts + attackPts + healthPts);
+        if (ava > 0)
         {
             player.GetComponent<PlayerMovementScript>().UpgradeHealthPoints();
             healthPts += 1;
-            skillPts -= 1;
+            //skillPts -= 1;
             UpdateText();
         }
     }
 
     public void UpdateText()
     {
-        pointsText.text = "Available Skill Points: " + skillPts;
+        float ava = skillPts - (movementPts + attackPts + healthPts);
+        pointsText.text = "Available Skill Points: " + ava;
         speedText.text = "Increases movement speed by 10% \nCurrent factor is " + (1 + (0.1 * movementPts));
         damageText.text = "Increases damage by 10% \nCurrent factor is " + (1 + (0.1 * attackPts));
-        healthText.text = "Increases health by 10% \nCurrent value is " + player.GetComponent<PlayerMovementScript>().health+"/100";
+        healthText.text = "Increases health by 10% \nCurrent value is " + player.GetComponent<PlayerMovementScript>().health + "/100";
     }
 }
