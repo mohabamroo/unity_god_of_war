@@ -11,8 +11,8 @@
 - ✔️ Player never gets hit by boss, maybe because weak point colliders are triggers, big problem there
 - ✔️ menus design is not consistent
 - Menus soundtracks
-- AUDIO MIXER, we already have one we just need to attach each sound we have to one of the mixer channels
-- Control Audio mixer is not implemnted t2rebn
+- ✔️ AUDIO MIXER, we already have one we just need to attach each sound we have to one of the mixer channels
+- ✔️ Control Audio mixer is not implemnted t2rebn
 - ✔️ Invincible cheat for kratos
 - ✔️ health bar recover on chest used, chest sound
 - ✔️ heavy attack and light attack effect on enemy
