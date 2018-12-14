@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114912549952495868}
   m_Layer: 5
   m_Name: GameplayUI 2
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2699,8 +2699,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114995164443925884}
-        m_MethodName: quit
+      - m_Target: {fileID: 114912549952495868}
+        m_MethodName: RestartScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5828,41 +5828,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114912549952495868}
-        m_MethodName: QuitToMainMenu
+        m_MethodName: RestartScene
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1483595521653430}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1064245390332022}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1374451011283452}
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6361,6 +6328,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapPanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  menuMusic: {fileID: 0}
+  gameMusic: {fileID: 0}
+  musicSource: {fileID: 0}
 --- !u!114 &114906894467903350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6402,6 +6372,8 @@ MonoBehaviour:
   mixer: {fileID: 24100000, guid: 7718d4039f2034f4e82f3f662002f4d8, type: 2}
   player: {fileID: 0}
   creditsAnim: {fileID: 95944087984524536}
+  backgroundMusic: {fileID: 0}
+  GameMusic: {fileID: 8300000, guid: 2eb8c48d07c0ee04a9360c303b9870a1, type: 3}
 --- !u!114 &114917056594169294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6871,6 +6843,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimapPanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  menuMusic: {fileID: 8300000, guid: 0716c3404c954ee468997c6d5dcd7e1f, type: 3}
+  gameMusic: {fileID: 8300000, guid: 2eb8c48d07c0ee04a9360c303b9870a1, type: 3}
+  musicSource: {fileID: 0}
 --- !u!222 &222001880971750112
 CanvasRenderer:
   m_ObjectHideFlags: 1

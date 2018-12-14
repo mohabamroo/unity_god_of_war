@@ -8,6 +8,10 @@ public class GameplayUIScript : MonoBehaviour {
 
 	public GameObject minimapPanel;
 	public GameObject gameOverPanel;
+    public AudioClip menuMusic;
+    public AudioClip gameMusic;
+    public AudioSource musicSource;
+
     // private SoundManager sound;
 
     GameObject pausePanel;
@@ -27,7 +31,6 @@ public class GameplayUIScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindWithTag("Player");
-
 		pausePanel  = GameObject.Find("GameplayUI").transform.Find("PausePanel").gameObject;
         gameOverPanel = GameObject.Find("GameplayUI").transform.Find("GameOverPanel").gameObject;
 		gamePanel = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
@@ -68,11 +71,13 @@ public class GameplayUIScript : MonoBehaviour {
         print(Time.timeScale);
         if (Time.timeScale == 1){
 			Time.timeScale = 0;
-            // sound.Pause ("Pause");
+            musicSource.clip = menuMusic;
+            musicSource.Play();
         }
 		else{
 			Time.timeScale = 1;
-            // sound.Pause ("Resume");
+            musicSource.clip = gameMusic;
+            musicSource.Play();
         }
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;

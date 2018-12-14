@@ -32,6 +32,8 @@ public class CanvasScript : MonoBehaviour {
     GameObject gameOverScreen;
     GameObject gameScreen;
     GameObject creditsScreen;
+    public AudioSource backgroundMusic;
+    public AudioClip GameMusic;
 
     private void Awake()
     {
@@ -65,6 +67,8 @@ public class CanvasScript : MonoBehaviour {
 
     public void StartGame()
     {
+        backgroundMusic.clip = GameMusic;
+        backgroundMusic.Play();
         Time.timeScale = 1;
         player.GetComponent<FlyCameraScript>().enabled = true;
     }
@@ -126,6 +130,8 @@ public class CanvasScript : MonoBehaviour {
 
     public void ResumeGame()
     {
+        backgroundMusic.clip = GameMusic;
+        backgroundMusic.Play();
         Time.timeScale = 1;
         PlayerPrefs.SetInt("Paused", 0);
         //GameScreen.SetActive(true);
