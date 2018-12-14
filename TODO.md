@@ -15,4 +15,5 @@
 - Control Audio mixer is not implemnted t2rebn
 - ✔️ Invincible cheat for kratos
 - ✔️ health bar recover on chest used, chest sound
+- ✔️ heavy attack and light attack effect on enemy
 - nav mush surface problem: enemies walk is kinda weird
