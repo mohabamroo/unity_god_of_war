@@ -122,6 +122,7 @@ public class AIAgentScript : MonoBehaviour
         {
             this.deadTime = this.time;
             playerScript.increaseXP(50);
+            playerScript.increaseKilledEnemies();
         }
         this.lastHitTime = this.time;
         this.nav.isStopped = true;

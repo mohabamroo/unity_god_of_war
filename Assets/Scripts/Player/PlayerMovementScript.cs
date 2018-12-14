@@ -28,6 +28,9 @@ public class PlayerMovementScript : MonoBehaviour
 
     public GameObject gameplayUI;
 
+    public int killedEnemies;
+    public int enemiesToKill;
+
     public float damageL;
     public float damageH;
     public float activeDamage;
@@ -41,6 +44,8 @@ public class PlayerMovementScript : MonoBehaviour
         this.anim = GetComponent<Animator>();
         this.health = 100;
         this.rage = 0;
+        this.enemiesToKill = 12;
+        this.killedEnemies = 0;
         DisableWeaponCollider();
         blocking = false;
         stateHolder = GameObject.FindGameObjectWithTag("StateHolder");
@@ -66,6 +71,14 @@ public class PlayerMovementScript : MonoBehaviour
         this.checkCheatCodes();
         this.checkRageMoodTime();
         this.updatePosition();
+        this.checkAllEnemiesKilled();
+    }
+
+    void checkAllEnemiesKilled() {
+        if(this.killedEnemies == this.enemiesToKill) {
+            this.killedEnemies = 0;
+            GameObject.FindGameObjectWithTag("StateHolder").GetComponent<StateScript>().loadNextLevel();
+        }
     }
 
     void checkCheatCodes()
@@ -76,8 +89,8 @@ public class PlayerMovementScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.O))
         {
-            print("rage cheat");
-            print(this.rageLimit - this.rage);
+            // print("rage cheat");
+            // print(this.rageLimit - this.rage);
             this.increaseRage(this.rageLimit - this.rage);
         }
     }
@@ -86,7 +99,7 @@ public class PlayerMovementScript : MonoBehaviour
     {
         if (this.rageActivated)
         {
-            print("rage time");
+            // print("rage time");
             this.rageTime += Time.deltaTime;
             if (this.rageTime > this.rageInterval)
             {
@@ -357,6 +370,10 @@ public class PlayerMovementScript : MonoBehaviour
         weaponCollider.enabled = false;
     }
 
+    public void increaseKilledEnemies() {
+        this.killedEnemies +=1;
+    }
+
     public void increaseXP(int points)
     {
         this.currentLevelXP += points;
@@ -364,7 +381,7 @@ public class PlayerMovementScript : MonoBehaviour
         if (this.currentLevelXP >= 500)
         {
             this.currentLevelXP = 0;
-            GameObject.FindGameObjectWithTag("StateHolder").GetComponent<StateScript>().loadNextLevel();
+            // GameObject.FindGameObjectWithTag("StateHolder").GetComponent<StateScript>().loadNextLevel();
         }
     }
 

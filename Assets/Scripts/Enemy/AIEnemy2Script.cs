@@ -16,12 +16,14 @@ public class AIEnemy2Script : MonoBehaviour
     public float lastHitTime;
     private float time;
     private bool firstAttack;
+    private bool dead;
 
     // Use this for initialization
     void Start()
     {
         firstAttack = true;
         lastHitTime = Time.deltaTime;
+        this.dead = false;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         health = 50;
@@ -47,6 +49,9 @@ public class AIEnemy2Script : MonoBehaviour
         if (health <= 0)
         {
             // Trigger dead animation
+            if(!this.dead)
+                player.GetComponent<PlayerMovementScript>().increaseKilledEnemies();
+            this.dead = true;
             Dead();
             return;
         }
