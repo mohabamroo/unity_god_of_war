@@ -37825,6 +37825,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 224521241116500044, guid: 134716d980af847d1bc052b11cc155a9,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -37937,9 +37942,134 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224009956796168790, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224009956796168790, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944239042601622, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944239042601622, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224944239042601622, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224519024307140002, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224519024307140002, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224637028215879736, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224637028215879736, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224637028215879736, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224275550353418438, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224275550353418438, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224875893056307318, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224875893056307318, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224875893056307318, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1596513734251800, guid: 134716d980af847d1bc052b11cc155a9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1104925613}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenCredits
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601873866795446, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114912549952495868, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: creditsAnim
+      value: 
+      objectReference: {fileID: 1104925614}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 134716d980af847d1bc052b11cc155a9, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1104925613 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114912549952495868, guid: 134716d980af847d1bc052b11cc155a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1104925612}
+  m_Script: {fileID: 11500000, guid: 282c16c249af147498a696b8d4c6afd5, type: 3}
+--- !u!95 &1104925614 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95944087984524536, guid: 134716d980af847d1bc052b11cc155a9,
+    type: 2}
+  m_PrefabInternal: {fileID: 1104925612}
 --- !u!1 &1106580803
 GameObject:
   m_ObjectHideFlags: 0
@@ -55095,6 +55225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 7718d4039f2034f4e82f3f662002f4d8, type: 2}
   player: {fileID: 0}
+  creditsAnim: {fileID: 0}
 --- !u!114 &1617395398
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -27,10 +27,17 @@ public class CanvasScript : MonoBehaviour {
 
     public GameObject player;
 
-    // Use this for initialization
-    void Start () {
+    public Animator creditsAnim;
+
+    private void Awake()
+    {
         Time.timeScale = 0;
         player.GetComponent<FlyCameraScript>().enabled = false;
+
+    }
+
+    // Use this for initialization
+    void Start () {
         //MainMenuScreen = this.gameObject.transform.GetChild(0).gameObject;
         //OptionsScreen = this.gameObject.transform.GetChild(1).gameObject;
         //GameScreen = this.gameObject.transform.GetChild(2).gameObject;
@@ -79,14 +86,7 @@ public class CanvasScript : MonoBehaviour {
 
     public void OpenCredits()
     {
-        //MainMenuScreen.SetActive(false);
-        //OptionsScreen.SetActive(false);
-        //GameScreen.SetActive(false);
-        //PauseScreen.SetActive(false);
-        //SkillUpgradeScreen.SetActive(false);
-        //GameOverScreen.SetActive(false);
-        //HowToPlayScreen.SetActive(false);
-        //CreditsScreen.SetActive(true);
+        creditsAnim.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     public void OpenUpgradeMenu()
