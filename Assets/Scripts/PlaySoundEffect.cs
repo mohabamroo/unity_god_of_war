@@ -10,7 +10,6 @@ public class PlaySoundEffect : StateMachineBehaviour {
 	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         audioScource = animator.gameObject.GetComponent<AudioSource>();
         if(stateInfo.IsName("running")){
-            Debug.Log("Running");
             audioScource.loop = true;
             audioScource.volume = 0.3f;
             audioScource.clip = soundEffect;

@@ -18,6 +18,7 @@ TagManager:
   - HealthBar
   - PlayerWeapon
   - StateHolder
+  - RageBar
   layers:
   - Default
   - TransparentFX

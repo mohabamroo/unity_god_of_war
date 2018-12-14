@@ -21,14 +21,17 @@ public class PlayerMovementScript : MonoBehaviour
     private float deadTime;
     float rageTime;
     public bool rageActivated = false;
-
+    public bool invincibleCheat = false;
+    public AudioSource rageSource;
     public Collider weaponCollider;
+    public int maxHealth = 100;
 
     public GameObject gameplayUI;
 
     public float damageL;
     public float damageH;
-
+    public float activeDamage;
+    public float rageInterval = 5f;
     GameObject stateHolder;
     // Use this for initialization
     void Start()
@@ -60,16 +63,35 @@ public class PlayerMovementScript : MonoBehaviour
                 this.loadGameOver();
             }
         }
-
+        this.checkCheatCodes();
         this.checkRageMoodTime();
         this.updatePosition();
     }
 
+    void checkCheatCodes()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            this.invincibleCheat = !this.invincibleCheat;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            print("rage cheat");
+            print(this.rageLimit - this.rage);
+            this.increaseRage(this.rageLimit - this.rage);
+        }
+    }
+
     void checkRageMoodTime()
     {
-        if (this.rageActivated && ((this.rageTime - this.time) > 5))
+        if (this.rageActivated)
         {
-            this.rageActivated = false;
+            print("rage time");
+            this.rageTime += Time.deltaTime;
+            if (this.rageTime > this.rageInterval)
+            {
+                this.rageActivated = false;
+            }
         }
     }
 
@@ -146,16 +168,22 @@ public class PlayerMovementScript : MonoBehaviour
             {
                 // left
                 // this.lookAtEnemy();
+                this.activeDamage = this.damageL;
                 anim.SetTrigger("attack");
             }
 
             if (Input.GetMouseButton(1))
             {
                 // right
-                this.lookAtEnemy();
+                // this.lookAtEnemy();
+                this.activeDamage = this.damageH;
                 anim.SetTrigger("heavy_attack");
             }
         }
+    }
+
+    public float getActiveDamage() {
+        return this.activeDamage;
     }
 
     void lookAtEnemy()
@@ -183,6 +211,10 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void takeHit(int amount)
     {
+        if (this.invincibleCheat)
+        {
+            return;
+        }
         m_CurrentClipInfo = this.anim.GetCurrentAnimatorClipInfo(0);
         var clip_name =
         m_CurrentClipInfo[0].clip.name;
@@ -193,7 +225,7 @@ public class PlayerMovementScript : MonoBehaviour
         // TODO: check blocking
         if (!blocking)
         {
-            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().getHit();
+            GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().getHit(amount);
             this.health -= amount;
             if (this.health <= 0)
             {
@@ -265,19 +297,27 @@ public class PlayerMovementScript : MonoBehaviour
 
     }
 
-    public void increaseRage()
+    public void increaseRage(int amount = 10)
     {
-        this.rage += 10;
+        if (this.rageActivated)
+        {
+            return;
+        }
+        this.rage += amount;
         if (this.rage > this.rageLimit)
         {
             this.rage = this.rageLimit;
         }
+        GameObject.FindGameObjectWithTag("RageBar").GetComponent<RageBarController>().increaseRageMeter(amount);
+
 
     }
 
     public void increaseHealthWithChest()
     {
-        this.health = 100;
+        GameObject.FindGameObjectWithTag("HealthBar").GetComponent<healthBarController>().recoverHealth(this.maxHealth - this.health);
+        this.health = this.maxHealth;
+
     }
 
     void handleRotation()
@@ -305,7 +345,6 @@ public class PlayerMovementScript : MonoBehaviour
     public void DisableWeaponCollider()
     {
         weaponCollider.enabled = false;
-        print(weaponCollider.enabled);
     }
 
     public void increaseXP(int points)
@@ -338,8 +377,10 @@ public class PlayerMovementScript : MonoBehaviour
     void activateRage()
     {
         // TODO: attach rage sound to animation
-        this.rageTime = this.time;
+        this.rageTime = 0;
+        this.rageSource.Play();
         this.anim.SetTrigger("rage");
+        GameObject.FindGameObjectWithTag("RageBar").GetComponent<RageBarController>().useRage(this.rageInterval);
         this.rageActivated = true;
         this.rage = 0;
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");

@@ -7,11 +7,12 @@ public class RecoveryScript : MonoBehaviour
 
     public int chestHP;
     bool chestUsed;
+    public AudioSource chestOpenSource;
     // Use this for initialization
     
     void Start()
     {
-        
+        chestOpenSource = transform.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +28,8 @@ public class RecoveryScript : MonoBehaviour
         {
             // call a function in the player class that maximizes/increases his HP
             if(!chestUsed) {
+                chestOpenSource.Play();
+                print("health increase");
                 GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerMovementScript>().increaseHealthWithChest();
                 this.chestUsed = true;
             }

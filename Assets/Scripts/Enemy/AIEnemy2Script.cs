@@ -30,7 +30,6 @@ public class AIEnemy2Script : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        print(health);
         time += Time.deltaTime;
         //Falsify();
         //startPosition = transform.localPosition;
@@ -61,9 +60,11 @@ public class AIEnemy2Script : MonoBehaviour
 
     void takeHit()
     {
+        print("hits");
         var playerScript = player.GetComponent<PlayerMovementScript>();
-        var attackDamage = playerScript.damageL;
+        var attackDamage = playerScript.getActiveDamage();
         var damage = playerScript.getRage() == true ? attackDamage*2 : attackDamage;
+        playerScript.increaseRage();
         health -= (int)damage;
         nav.isStopped = true;
         Hit();
