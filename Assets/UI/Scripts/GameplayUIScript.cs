@@ -11,12 +11,14 @@ public class GameplayUIScript : MonoBehaviour {
     public AudioClip menuMusic;
     public AudioClip gameMusic;
     public AudioSource musicSource;
+    public GameObject stateHolder;
 
     // private SoundManager sound;
 
     GameObject pausePanel;
     GameObject gamePanel;
     GameObject tutorialPanel;
+    GameObject mainMenuPanel;
 
 	GameObject gatePanel;
 	GameObject roadBlockPanel;
@@ -32,6 +34,7 @@ public class GameplayUIScript : MonoBehaviour {
 	void Start () {
         player = GameObject.FindWithTag("Player");
 		pausePanel  = GameObject.Find("GameplayUI").transform.Find("PausePanel").gameObject;
+        mainMenuPanel = GameObject.Find("GameplayUI").transform.Find("MainMenuScreen").gameObject;
         gameOverPanel = GameObject.Find("GameplayUI").transform.Find("GameOverPanel").gameObject;
 		gamePanel = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
         gatePanel = GameObject.Find("GameplayUI").transform.Find("GatePanel").gameObject;
@@ -87,9 +90,28 @@ public class GameplayUIScript : MonoBehaviour {
 
 	public void restartLevel(){
 		Time.timeScale = 1;
-		int level = PlayerPrefs.GetInt("level");
-		SceneManager.LoadScene("Level " + level);
-	}
+        //int level = PlayerPrefs.GetInt("level");
+        //SceneManager.LoadScene("Level " + level);
+        Destroy(player);
+        Destroy(transform.gameObject);
+        Destroy(stateHolder);
+        if (SceneManager.GetActiveScene().name == "MohabScene")
+        {
+            SceneManager.LoadScene("MohabScene");
+            mainMenuPanel.SetActive(false);
+
+        }
+        if (SceneManager.GetActiveScene().name == "BossScene")
+        {
+            SceneManager.LoadScene("BossScene");
+        }
+        pausePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        gamePanel.SetActive(true);
+        //gameOverScreen.SetActive(false);
+        //pauseScreen.SetActive(false);
+        //gameScreen.SetActive(true);
+    }
 
 	public void quit(){
 		Time.timeScale = 1;

@@ -37904,13 +37904,23 @@ Prefab:
     - target: {fileID: 114819778752484182, guid: 134716d980af847d1bc052b11cc155a9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: QuitGame
+      value: RestartScene
       objectReference: {fileID: 0}
     - target: {fileID: 114819778752484182, guid: 134716d980af847d1bc052b11cc155a9,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 786758674}
+    - target: {fileID: 114995164443925884, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: stateHolder
+      value: 
+      objectReference: {fileID: 1693773270}
+    - target: {fileID: 114912549952495868, guid: 134716d980af847d1bc052b11cc155a9,
+        type: 2}
+      propertyPath: stateHolder
+      value: 
+      objectReference: {fileID: 1693773270}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 134716d980af847d1bc052b11cc155a9, type: 2}
   m_IsPrefabAsset: 0
@@ -55067,6 +55077,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282c16c249af147498a696b8d4c6afd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateHolder: {fileID: 0}
   mixer: {fileID: 24100000, guid: 7718d4039f2034f4e82f3f662002f4d8, type: 2}
   player: {fileID: 0}
   creditsAnim: {fileID: 0}
@@ -55101,6 +55112,7 @@ MonoBehaviour:
   menuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
   musicSource: {fileID: 0}
+  stateHolder: {fileID: 0}
 --- !u!114 &1617395400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59621,6 +59633,7 @@ MonoBehaviour:
   menuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
   musicSource: {fileID: 0}
+  stateHolder: {fileID: 0}
 --- !u!114 &1740812248
 MonoBehaviour:
   m_ObjectHideFlags: 0

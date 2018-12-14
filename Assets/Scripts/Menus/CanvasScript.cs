@@ -17,6 +17,8 @@ public class CanvasScript : MonoBehaviour {
     GameObject HowToPlayScreen;
     GameObject CreditsScreen;
 
+    public GameObject stateHolder;
+
 
     //Sliders
     //public Slider MusicSlider;
@@ -32,6 +34,7 @@ public class CanvasScript : MonoBehaviour {
     GameObject gameOverScreen;
     GameObject gameScreen;
     GameObject creditsScreen;
+    GameObject pauseScreen;
     public AudioSource backgroundMusic;
     public AudioClip GameMusic;
 
@@ -48,6 +51,7 @@ public class CanvasScript : MonoBehaviour {
         gameOverScreen = GameObject.Find("GameplayUI").transform.Find("GameOverPanel").gameObject;
         gameScreen = GameObject.Find("GameplayUI").transform.Find("GameScreen").gameObject;
         creditsScreen = GameObject.Find("GameplayUI").transform.Find("CreditsScreen").gameObject;
+        pauseScreen = GameObject.Find("GameplayUI").transform.Find("PausePanel").gameObject;
         print(creditsScreen);
         //MainMenuScreen = this.gameObject.transform.GetChild(0).gameObject;
         //OptionsScreen = this.gameObject.transform.GetChild(1).gameObject;
@@ -175,12 +179,17 @@ public class CanvasScript : MonoBehaviour {
 
     public void RestartScene()
     {
+        Destroy(player);
+        Destroy(transform.gameObject);
+        Destroy(stateHolder);
         SceneManager.LoadScene("MohabScene");
     }
 
     public void RestartLevel()
     {
-        //TODO: Restart current Level
+       
+
+       
     }
 
     public void UpgradeMovement()
