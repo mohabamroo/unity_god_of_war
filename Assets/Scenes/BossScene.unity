@@ -1050,7 +1050,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &736852862
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1158,7 +1158,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959406861
 GameObject:
@@ -2480,6 +2480,7 @@ MonoBehaviour:
   menuMusic: {fileID: 0}
   gameMusic: {fileID: 0}
   musicSource: {fileID: 0}
+  stateHolder: {fileID: 0}
 --- !u!114 &1403356390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2535,7 +2536,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1504144853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2553,6 +2554,7 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: 0716c3404c954ee468997c6d5dcd7e1f, type: 3}
   gameMusic: {fileID: 8300000, guid: 2eb8c48d07c0ee04a9360c303b9870a1, type: 3}
   musicSource: {fileID: 736852862}
+  stateHolder: {fileID: 0}
 --- !u!114 &1504144854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2635,7 +2637,7 @@ RectTransform:
   - {fileID: 208059576}
   - {fileID: 1310810078}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

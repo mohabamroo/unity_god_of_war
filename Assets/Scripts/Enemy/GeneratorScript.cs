@@ -8,9 +8,9 @@ public class GeneratorScript : MonoBehaviour
     private float time;
     public Transform[] enemies;
     public int interval = 70;
-    public int enemiesLimit = 20;
-    public int maxWaves = 3;
-    public int enemiesLimitPerWave = 4;
+    public int enemiesLimit = 3;
+    public int maxWaves = 4;
+    public int enemiesLimitPerWave = 2;
     public int currentWave;
 
     // Use this for initialization
@@ -40,6 +40,7 @@ public class GeneratorScript : MonoBehaviour
         for (var i = 1; i < this.enemiesLimitPerWave; i++)
         {
             var currentEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(currentEnemies.Length);
             if (currentEnemies.Length < this.enemiesLimit)
             {
                 var randomXPostion = Random.Range(0, 50);

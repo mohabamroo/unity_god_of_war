@@ -11,11 +11,11 @@ public class PlaySoundEffect : StateMachineBehaviour {
         audioScource = animator.gameObject.GetComponent<AudioSource>();
         if(stateInfo.IsName("running")){
             audioScource.loop = true;
-            audioScource.volume = 0.3f;
+            audioScource.volume = 0.8f;
             audioScource.clip = soundEffect;
             audioScource.Play();
         } else {
-            audioScource.PlayOneShot(soundEffect, 0.3f);
+            audioScource.PlayOneShot(soundEffect, 0.8f);
         }       
 	}
 

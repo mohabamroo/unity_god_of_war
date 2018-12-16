@@ -54,6 +54,8 @@ public class GameplayUIScript : MonoBehaviour {
         questPanel.SetActive(false);
         roadBlockPanel.SetActive (false);
         //gamePanel.SetActive(false);
+
+        DontDestroyOnLoad(musicSource);
     }
 
     // Update is called once per frame

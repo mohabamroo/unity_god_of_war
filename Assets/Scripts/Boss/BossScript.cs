@@ -76,8 +76,8 @@ public class BossScript : MonoBehaviour
         nav.SetDestination(player.position);
         attack_time -= Time.deltaTime;
         angry_time -= Time.deltaTime;
-        
-        if (attack_time < 0 && !allAttacksBlocked)
+        float dist = Vector3.Distance(player.position, transform.position);
+        if (attack_time < 0 && !allAttacksBlocked && dist<3)
         {
             int random = pickAttack();
 
