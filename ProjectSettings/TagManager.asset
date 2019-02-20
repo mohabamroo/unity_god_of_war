@@ -3,7 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
+  - Enemy
+  - Boss
+  - Weapon
+  - Floor
+  - WeakPoint
+  - WeakPointLeft
+  - WeakPointRight
+  - WeakPointSpine
+  - Rock
+  - SoundEffect
+  - HealthBar
+  - PlayerWeapon
+  - StateHolder
+  - RageBar
+  - Canvas
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,20 @@
+# don't panic, we still have time I guess... List
+- Make sure of hist sounds for all characters
+- ✔️ test rage damage
+- load credits scene on end, check state script
+- ✔️ change rage meter UI (just like health bar)
+- ✔️ Upgrade SKills is not implemented
+- ✔️ rage sound
+- Boss weak points, test both legs are hit
+- WE need new animation for third attack for Boss, punching is no good
+- camera movement script, current one is shit
+- ✔️ Player never gets hit by boss, maybe because weak point colliders are triggers, big problem there
+- ✔️ menus design is not consistent
+- Menus soundtracks
+- ✔️ AUDIO MIXER, we already have one we just need to attach each sound we have to one of the mixer channels
+- ✔️ Control Audio mixer is not implemnted t2rebn
+- ✔️ Invincible cheat for kratos
+- ✔️ health bar recover on chest used, chest sound
+- ✔️ heavy attack and light attack effect on enemy
+- ✔️ waves logic
+- nav mush surface problem: enemies walk is kinda weird
